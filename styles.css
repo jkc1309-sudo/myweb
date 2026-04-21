@@ -821,7 +821,10 @@ h3 {
 }
 
 .project-detail {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   grid-template-columns: 0.85fr 1.15fr;
   gap: 32px;
   padding: 36px;
@@ -830,6 +833,13 @@ h3 {
   background: var(--surface);
   box-shadow: var(--shadow-sm);
   transition: transform 260ms ease, box-shadow 260ms ease;
+}
+
+.project-detail > img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .section:not(.metrics):not(.alt) .project-detail {
