@@ -2253,6 +2253,14 @@ html[lang="zh-CN"] [id] {
   color: var(--muted);
 }
 
+.detail-prose a:not(.button) {
+  color: var(--accent);
+}
+
+.detail-prose a:not(.button):hover {
+  color: var(--accent-hover);
+}
+
 .detail-prose ul {
   display: grid;
   gap: 8px;
