@@ -1434,7 +1434,7 @@ h3 {
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* ============ Responsive ============ */
@@ -2220,7 +2220,7 @@ html[lang="zh-CN"] [id] {
 .detail-cover {
   max-width: var(--max-width);
   margin: 32px auto 0;
-  aspect-ratio: 16 / 9;
+  padding: 16px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--tile);
@@ -2228,8 +2228,14 @@ html[lang="zh-CN"] [id] {
 
 .detail-cover img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 12px;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .detail-prose {
