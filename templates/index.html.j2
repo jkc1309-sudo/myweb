@@ -1,0 +1,236 @@
+{% from "macros.j2" import pill, site_footer %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}" />
+    <link rel="stylesheet" href="styles.css?v={{ site.css_version }}" />
+    <script defer src="script.js"></script>
+  </head>
+  <body data-page="home">
+    <div class="site-shell" id="top">
+      <header class="site-header">
+        <a class="brand" href="index.html">
+          <span class="brand-script">Kecheng</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="打开导航">
+          <span></span>
+          <span></span>
+        </button>
+        <div class="header-end">
+          <nav class="site-nav" aria-label="页面导航">
+            <a href="#about" data-section="about">简介</a>
+            <a href="#projects" data-section="projects">项目</a>
+            <a href="#research" data-section="research">研究</a>
+            <a href="#honors" data-section="honors">荣誉</a>
+            <a href="#contact" data-section="contact">联系</a>
+            <a class="nav-cta" href="cv.html" data-section="cv">简历</a>
+          </nav>
+          <nav class="lang-switch" aria-label="语言">
+            <a href="index.html" aria-current="page">中</a>
+            <span aria-hidden="true">/</span>
+            <a href="en/index.html" hreflang="en">EN</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero reveal">
+          <div class="hero-split">
+            <div class="hero-copy">
+              <p class="eyebrow">{{ site.hero.eyebrow }}</p>
+              <h1>{{ site.hero.name }}</h1>
+              <p class="lead">{{ site.hero.lead }}</p>
+              <p>{{ site.hero.body }}</p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="#projects">查看项目</a>
+                <a class="button button-secondary" href="cv.html">查看简历</a>
+                <a class="button button-tertiary" href="mailto:{{ site.contact.email }}">发邮件</a>
+              </div>
+            </div>
+            <aside class="hero-panel">
+              <div class="hero-portrait">
+                <span class="hero-portrait__glow" aria-hidden="true"></span>
+                <img src="{{ site.portrait }}" alt="{{ site.portrait_alt }}" />
+              </div>
+            </aside>
+          </div>
+          <div class="stat-band">
+            {% for stat in site.stats %}
+            <article>
+              <strong>{{ stat.value }}</strong>
+              <span>{{ stat.label }}</span>
+            </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="section alt" id="about" data-section-id="about">
+          <div class="section-heading reveal">
+            <p class="section-label">{{ site.about.label }}</p>
+            <h2>{{ site.about.heading }}</h2>
+          </div>
+          <div class="about-grid reveal">
+            <div class="about-copy">
+              {% for para in site.about.paragraphs %}
+              <p>{{ para }}</p>
+              {% endfor %}
+              <div class="skill-cloud">
+                {% for tag in site.about.skills %}
+                {{ pill(tag) }}
+                {% endfor %}
+              </div>
+            </div>
+            <aside class="about-side">
+              <div class="side-card">
+                <h3>教育经历</h3>
+                <ul class="edu-list">
+                  {% for item in site.about.education %}
+                  <li>
+                    <strong>{{ item.title }}</strong>
+                    <span>{{ item.detail }}</span>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="side-card">
+                <h3>联系方式</h3>
+                <div class="contact-list">
+                  {% for email in site.about.emails %}
+                  <a href="mailto:{{ email }}">{{ email }}</a>
+                  {% endfor %}
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section" id="projects" data-section-id="projects">
+          <div class="section-heading reveal">
+            <p class="section-label">{{ site.projects_section.label }}</p>
+            <h2>{{ site.projects_section.heading }}</h2>
+          </div>
+          <div class="work-grid reveal">
+            {% for work in projects %}
+            <a class="work-card" href="projects/{{ work.slug }}.html">
+              <div class="work-card__media">
+                {% if work.cover %}
+                <img src="{{ work.cover }}" alt="{{ work.cover_alt or work.title }}" />
+                {% endif %}
+              </div>
+              <div class="work-card__body">
+                <p class="card-kicker">{{ work.kicker }}</p>
+                <h3>{{ work.title }}</h3>
+                <p>{{ work.summary }}</p>
+                <p class="work-card__meta">{{ work.card_meta }}</p>
+                <div class="skill-cloud">
+                  {% for tag in work.tags %}
+                  {{ pill(tag) }}
+                  {% endfor %}
+                </div>
+                <span class="work-card__arrow">查看详情</span>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="section alt" id="research" data-section-id="research">
+          <div class="section-heading reveal">
+            <p class="section-label">{{ site.research_section.label }}</p>
+            <h2>{{ site.research_section.heading }}</h2>
+          </div>
+          <div class="work-grid reveal">
+            {% for work in research %}
+            <a class="work-card" href="projects/{{ work.slug }}.html">
+              <div class="work-card__media">
+                {% if work.cover %}
+                <img src="{{ work.cover }}" alt="{{ work.cover_alt or work.title }}" />
+                {% endif %}
+              </div>
+              <div class="work-card__body">
+                <p class="card-kicker">{{ work.kicker }}</p>
+                <h3>{{ work.title }}</h3>
+                <p>{{ work.summary }}</p>
+                <p class="work-card__meta">{{ work.card_meta }}</p>
+                <div class="skill-cloud">
+                  {% for tag in work.tags %}
+                  {{ pill(tag) }}
+                  {% endfor %}
+                </div>
+                <span class="work-card__arrow">查看详情</span>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="section" id="honors" data-section-id="honors">
+          <div class="section-heading reveal">
+            <p class="section-label">{{ site.honors.label }}</p>
+            <h2>{{ site.honors.heading }}</h2>
+          </div>
+          <div class="honor-grid reveal">
+            <article class="honor-card">
+              <p class="section-label">{{ site.honors.papers.label }}</p>
+              <div class="honor-stat">
+                {% for stat in site.honors.papers.stats %}
+                <div>
+                  <strong>{{ stat.value }}</strong>
+                  <span>{{ stat.label }}</span>
+                </div>
+                {% endfor %}
+              </div>
+              <ul>
+                {% for item in site.honors.papers['items'] %}
+                <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </article>
+            <article class="honor-card">
+              <p class="section-label">{{ site.honors.contests.label }}</p>
+              <ul>
+                {% for item in site.honors.contests['items'] %}
+                <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </article>
+            <article class="honor-card">
+              <p class="section-label">{{ site.honors.awards.label }}</p>
+              <ul>
+                {% for item in site.honors.awards['items'] %}
+                <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </article>
+            <article class="honor-card">
+              <p class="section-label">{{ site.honors.tools.label }}</p>
+              <ul>
+                {% for item in site.honors.tools['items'] %}
+                <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section alt" id="contact" data-section-id="contact">
+          <div class="contact-cta reveal">
+            <p class="section-label">{{ site.contact.label }}</p>
+            <h2>{{ site.contact.heading }}</h2>
+            <p>{{ site.contact.body }}</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="mailto:{{ site.contact.email }}">写邮件</a>
+              <a class="button button-secondary" href="cv.html">查看简历</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {{ site_footer(site) }}
+    </div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">↑</button>
+  </body>
+</html>

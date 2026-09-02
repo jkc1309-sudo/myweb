@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>内容管理 | 金可成</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body { background: var(--bg); }
+      .admin { max-width: 1080px; margin: 0 auto; padding: 28px 20px 80px; }
+      .admin-top { display: flex; justify-content: space-between; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 24px; }
+      .admin-top h1 { font-size: 1.75rem; }
+      .admin-note { color: var(--muted); font-size: 0.92rem; }
+      .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+      .tabs button { border: 0; background: var(--tile); color: var(--ink); padding: 8px 14px; border-radius: 999px; cursor: pointer; font: inherit; }
+      .tabs button.active { background: var(--ink); color: #fff; }
+      .panel { display: none; }
+      .panel.active { display: grid; gap: 16px; }
+      .card { background: var(--surface); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-sm); display: grid; gap: 12px; }
+      .card h2 { font-size: 1.15rem; }
+      label { display: grid; gap: 6px; font-size: 0.82rem; color: var(--muted); }
+      input, textarea, select { width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; color: var(--ink); background: #fff; }
+      textarea { min-height: 88px; resize: vertical; }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .list-editor { display: grid; gap: 8px; }
+      .list-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: start; }
+      .ghost { border: 0; background: var(--tile); color: var(--ink); border-radius: 8px; padding: 8px 10px; cursor: pointer; }
+      .danger { color: #b42318; }
+      .work-layout { display: grid; grid-template-columns: 240px 1fr; gap: 16px; }
+      .work-nav { display: grid; gap: 8px; align-content: start; }
+      .work-nav button { text-align: left; }
+      .work-nav button.active { background: var(--ink); color: #fff; }
+      .status { min-height: 1.4em; font-size: 0.9rem; color: var(--accent); }
+      .status.error { color: #b42318; }
+      .preview { width: 100%; max-height: 180px; object-fit: contain; background: var(--tile); border-radius: 12px; }
+      @media (max-width: 800px) {
+        .row, .work-layout { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="admin">
+      <div class="admin-top">
+        <div>
+          <p class="eyebrow">本机后台</p>
+          <h1>内容管理</h1>
+          <p class="admin-note">只在 127.0.0.1 可用。保存后会重写中文首页和项目详情页，再自己 git push 上线。</p>
+        </div>
+        <div class="hero-actions">
+          <button class="button button-primary" id="save-btn" type="button">保存并生成</button>
+          <a class="button button-secondary" href="/" target="_blank">预览首页</a>
+        </div>
+      </div>
+      <p class="status" id="status"></p>
+      <div class="tabs">
+        <button type="button" data-tab="site" class="active">站点</button>
+        <button type="button" data-tab="works">作品</button>
+        <button type="button" data-tab="uploads">上传</button>
+      </div>
+
+      <section class="panel active" id="tab-site"></section>
+      <section class="panel" id="tab-works"></section>
+      <section class="panel" id="tab-uploads"></section>
+    </div>
+
+    <script>
+      const TONES = ["", "purple", "teal", "orange", "soft"];
+      let site = null;
+      let works = [];
+      let current = 0;
+
+      const $ = (id) => document.getElementById(id);
+      const statusEl = $("status");
+
+      function setStatus(text, isError = false) {
+        statusEl.textContent = text;
+        statusEl.classList.toggle("error", isError);
+      }
+
+      function field(label, key, value, multiline = false) {
+        const id = `f-${key}`;
+        return `<label>${label}${
+          multiline
+            ? `<textarea data-key="${key}">${escapeAttr(value)}</textarea>`
+            : `<input data-key="${key}" value="${escapeAttr(value)}" />`
+        }</label>`;
+      }
+
+      function escapeAttr(value) {
+        return String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      function linesToList(text) {
+        return String(text || "")
+          .split("\n")
+          .map((item) => item.trim())
+          .filter(Boolean);
+      }
+
+      function readKey(root, key) {
+        return root.querySelector(`[data-key="${key}"]`)?.value ?? "";
+      }
+
+      function renderSite() {
+        const a = site.about;
+        const h = site.honors;
+        $("tab-site").innerHTML = `
+          <article class="card">
+            <h2>基础</h2>
+            <div class="row">
+              ${field("页面标题", "title", site.title)}
+              ${field("SEO 描述", "description", site.description, true)}
+            </div>
+            ${field("肖像路径", "portrait", site.portrait)}
+            ${field("肖像 alt", "portrait_alt", site.portrait_alt)}
+          </article>
+          <article class="card">
+            <h2>首页 Hero</h2>
+            ${field("眉题", "hero.eyebrow", site.hero.eyebrow)}
+            ${field("姓名", "hero.name", site.hero.name)}
+            ${field("导语", "hero.lead", site.hero.lead, true)}
+            ${field("简介", "hero.body", site.hero.body, true)}
+          </article>
+          <article class="card">
+            <h2>数据条（每行：数值 | 标签）</h2>
+            <label>统计
+              <textarea data-key="stats">${site.stats.map((s) => `${s.value} | ${s.label}`).join("\n")}</textarea>
+            </label>
+          </article>
+          <article class="card">
+            <h2>简介区</h2>
+            ${field("栏目标题", "about.label", a.label)}
+            ${field("大标题", "about.heading", a.heading)}
+            ${field("段落（空行分段）", "about.paragraphs", a.paragraphs.join("\n\n"), true)}
+            <label>技能（每行：文案 | 色调 empty/purple/teal/orange/soft）
+              <textarea data-key="about.skills">${a.skills.map((s) => `${s.label} | ${s.tone || ""}`).join("\n")}</textarea>
+            </label>
+            <label>教育经历（每行：标题 | 细节）
+              <textarea data-key="about.education">${a.education.map((s) => `${s.title} | ${s.detail}`).join("\n")}</textarea>
+            </label>
+            <label>邮箱（每行一个）
+              <textarea data-key="about.emails">${a.emails.join("\n")}</textarea>
+            </label>
+          </article>
+          <article class="card">
+            <h2>分区标题</h2>
+            <div class="row">
+              ${field("项目栏目标题", "projects_section.label", site.projects_section.label)}
+              ${field("项目大标题", "projects_section.heading", site.projects_section.heading)}
+            </div>
+            <div class="row">
+              ${field("研究栏目标题", "research_section.label", site.research_section.label)}
+              ${field("研究大标题", "research_section.heading", site.research_section.heading)}
+            </div>
+          </article>
+          <article class="card">
+            <h2>荣誉</h2>
+            ${field("栏目标题", "honors.label", h.label)}
+            ${field("大标题", "honors.heading", h.heading)}
+            <label>论文统计（每行：数值 | 标签）
+              <textarea data-key="honors.papers.stats">${h.papers.stats.map((s) => `${s.value} | ${s.label}`).join("\n")}</textarea>
+            </label>
+            <label>论文与专利条目
+              <textarea data-key="honors.papers.items">${h.papers.items.join("\n")}</textarea>
+            </label>
+            <label>竞赛
+              <textarea data-key="honors.contests.items">${h.contests.items.join("\n")}</textarea>
+            </label>
+            <label>荣誉
+              <textarea data-key="honors.awards.items">${h.awards.items.join("\n")}</textarea>
+            </label>
+            <label>语言与工具
+              <textarea data-key="honors.tools.items">${h.tools.items.join("\n")}</textarea>
+            </label>
+          </article>
+          <article class="card">
+            <h2>联系与页脚</h2>
+            ${field("联系栏目标题", "contact.label", site.contact.label)}
+            ${field("联系标题", "contact.heading", site.contact.heading)}
+            ${field("联系正文", "contact.body", site.contact.body, true)}
+            ${field("主邮箱", "contact.email", site.contact.email)}
+            ${field("版权", "footer.copyright", site.footer.copyright)}
+            ${field("更新日期", "footer.updated", site.footer.updated)}
+          </article>
+        `;
+      }
+
+      function emptyWork() {
+        return {
+          slug: "new-work",
+          type: "project",
+          kicker: "",
+          title: "新作品",
+          summary: "",
+          card_meta: "",
+          tags: [{ label: "", tone: "" }],
+          cover: "",
+          cover_alt: "",
+          breadcrumb: "",
+          eyebrow: "",
+          detail_title: "",
+          detail_meta: [],
+          lead: "",
+          description: "",
+          en_href: "../en/projects.html",
+          background: "",
+          duties: [],
+          solution: "",
+          outcome: "",
+          metrics: [],
+          lists: [],
+          paper: { title: "", venue: "", doi: "" },
+          links: [],
+        };
+      }
+
+      function renderWorks() {
+        const work = works[current] || emptyWork();
+        if (!works[current]) {
+          works.push(work);
+          current = works.length - 1;
+        }
+        $("tab-works").innerHTML = `
+          <div class="work-layout">
+            <aside class="work-nav card">
+              ${works
+                .map(
+                  (item, i) =>
+                    `<button type="button" class="${i === current ? "active" : ""}" data-open="${i}">${item.title || item.slug}</button>`
+                )
+                .join("")}
+              <button type="button" class="ghost" id="add-work">新增作品</button>
+            </aside>
+            <article class="card">
+              <div class="row">
+                ${field("slug（英文短名）", "slug", work.slug)}
+                <label>类型
+                  <select data-key="type">
+                    <option value="project" ${work.type === "project" ? "selected" : ""}>项目</option>
+                    <option value="research" ${work.type === "research" ? "selected" : ""}>研究</option>
+                  </select>
+                </label>
+              </div>
+              <div class="row">
+                ${field("卡片标题", "title", work.title)}
+                ${field("卡片眉题", "kicker", work.kicker)}
+              </div>
+              ${field("卡片摘要", "summary", work.summary, true)}
+              ${field("卡片时间/单位", "card_meta", work.card_meta)}
+              <label>标签（每行：文案 | 色调）
+                <textarea data-key="tags">${(work.tags || []).map((t) => `${t.label} | ${t.tone || ""}`).join("\n")}</textarea>
+              </label>
+              <div class="row">
+                ${field("封面路径", "cover", work.cover)}
+                ${field("封面 alt", "cover_alt", work.cover_alt)}
+              </div>
+              <label>上传封面
+                <input type="file" accept="image/*" data-upload="cover" />
+              </label>
+              ${field("面包屑短名", "breadcrumb", work.breadcrumb)}
+              ${field("详情眉题", "eyebrow", work.eyebrow)}
+              ${field("详情标题", "detail_title", work.detail_title)}
+              ${field("详情元信息（每行一条）", "detail_meta", (work.detail_meta || []).join("\n"), true)}
+              ${field("详情导语", "lead", work.lead, true)}
+              ${field("SEO 描述", "description", work.description, true)}
+              ${field("英文页链接", "en_href", work.en_href)}
+              ${field("背景与问题", "background", work.background, true)}
+              ${field("职责（每行一条）", "duties", (work.duties || []).join("\n"), true)}
+              ${field("方案与实现", "solution", work.solution, true)}
+              ${field("结果与验证", "outcome", work.outcome, true)}
+              <label>指标（每行：数值 | 标签）
+                <textarea data-key="metrics">${(work.metrics || []).map((m) => `${m.value} | ${m.label}`).join("\n")}</textarea>
+              </label>
+              <label>清单（用空行分段，首行是小标题）
+                <textarea data-key="lists">${(work.lists || [])
+                  .map((g) => [g.title, ...(g.items || [])].join("\n"))
+                  .join("\n\n")}</textarea>
+              </label>
+              ${field("论文标题", "paper.title", work.paper?.title)}
+              ${field("论文刊物/状态", "paper.venue", work.paper?.venue)}
+              ${field("DOI", "paper.doi", work.paper?.doi)}
+              <label>按钮链接（每行：文案 | 网址）
+                <textarea data-key="links">${(work.links || []).map((l) => `${l.label} | ${l.url}`).join("\n")}</textarea>
+              </label>
+              <div class="hero-actions">
+                <button type="button" class="ghost" id="move-up">上移</button>
+                <button type="button" class="ghost" id="move-down">下移</button>
+                <button type="button" class="ghost danger" id="delete-work">删除</button>
+              </div>
+            </article>
+          </div>
+        `;
+      }
+
+      function renderUploads() {
+        $("tab-uploads").innerHTML = `
+          <article class="card">
+            <h2>首页肖像</h2>
+            <img class="preview" src="/${site.portrait}" alt="" />
+            <label>替换肖像
+              <input type="file" accept="image/*" data-upload="portrait" />
+            </label>
+          </article>
+          <article class="card">
+            <h2>简历 PDF</h2>
+            <label>中文简历 Jin_CV_zh.pdf
+              <input type="file" accept="application/pdf" data-upload="cv_zh" />
+            </label>
+            <label>英文简历 Jin_CV.pdf
+              <input type="file" accept="application/pdf" data-upload="cv_en" />
+            </label>
+          </article>
+        `;
+      }
+
+      function collectPairs(text) {
+        return linesToList(text).map((line) => {
+          const [left, ...rest] = line.split("|");
+          return { left: left.trim(), right: rest.join("|").trim() };
+        });
+      }
+
+      function collectSite() {
+        const root = $("tab-site");
+        site.title = readKey(root, "title");
+        site.description = readKey(root, "description");
+        site.portrait = readKey(root, "portrait");
+        site.portrait_alt = readKey(root, "portrait_alt");
+        site.hero.eyebrow = readKey(root, "hero.eyebrow");
+        site.hero.name = readKey(root, "hero.name");
+        site.hero.lead = readKey(root, "hero.lead");
+        site.hero.body = readKey(root, "hero.body");
+        site.stats = collectPairs(readKey(root, "stats")).map((p) => ({ value: p.left, label: p.right }));
+        site.about.label = readKey(root, "about.label");
+        site.about.heading = readKey(root, "about.heading");
+        site.about.paragraphs = readKey(root, "about.paragraphs").split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean);
+        site.about.skills = collectPairs(readKey(root, "about.skills")).map((p) => ({
+          label: p.left,
+          tone: TONES.includes(p.right) ? p.right : "",
+        }));
+        site.about.education = collectPairs(readKey(root, "about.education")).map((p) => ({
+          title: p.left,
+          detail: p.right,
+        }));
+        site.about.emails = linesToList(readKey(root, "about.emails"));
+        site.projects_section.label = readKey(root, "projects_section.label");
+        site.projects_section.heading = readKey(root, "projects_section.heading");
+        site.research_section.label = readKey(root, "research_section.label");
+        site.research_section.heading = readKey(root, "research_section.heading");
+        site.honors.label = readKey(root, "honors.label");
+        site.honors.heading = readKey(root, "honors.heading");
+        site.honors.papers.stats = collectPairs(readKey(root, "honors.papers.stats")).map((p) => ({
+          value: p.left,
+          label: p.right,
+        }));
+        site.honors.papers.items = linesToList(readKey(root, "honors.papers.items"));
+        site.honors.contests.items = linesToList(readKey(root, "honors.contests.items"));
+        site.honors.awards.items = linesToList(readKey(root, "honors.awards.items"));
+        site.honors.tools.items = linesToList(readKey(root, "honors.tools.items"));
+        site.contact.label = readKey(root, "contact.label");
+        site.contact.heading = readKey(root, "contact.heading");
+        site.contact.body = readKey(root, "contact.body");
+        site.contact.email = readKey(root, "contact.email");
+        site.footer.copyright = readKey(root, "footer.copyright");
+        site.footer.updated = readKey(root, "footer.updated");
+      }
+
+      function parseLists(text) {
+        return String(text || "")
+          .split(/\n\s*\n/)
+          .map((block) => block.trim())
+          .filter(Boolean)
+          .map((block) => {
+            const [title, ...items] = block.split("\n").map((s) => s.trim()).filter(Boolean);
+            return { title, items };
+          });
+      }
+
+      function collectWork() {
+        const root = $("tab-works");
+        if (!root.querySelector("[data-key='slug']")) return;
+        const work = works[current];
+        work.slug = readKey(root, "slug").trim().toLowerCase();
+        work.type = readKey(root, "type");
+        work.title = readKey(root, "title");
+        work.kicker = readKey(root, "kicker");
+        work.summary = readKey(root, "summary");
+        work.card_meta = readKey(root, "card_meta");
+        work.tags = collectPairs(readKey(root, "tags")).map((p) => ({
+          label: p.left,
+          tone: TONES.includes(p.right) ? p.right : "",
+        }));
+        work.cover = readKey(root, "cover");
+        work.cover_alt = readKey(root, "cover_alt");
+        work.breadcrumb = readKey(root, "breadcrumb");
+        work.eyebrow = readKey(root, "eyebrow");
+        work.detail_title = readKey(root, "detail_title");
+        work.detail_meta = linesToList(readKey(root, "detail_meta"));
+        work.lead = readKey(root, "lead");
+        work.description = readKey(root, "description");
+        work.en_href = readKey(root, "en_href");
+        work.background = readKey(root, "background");
+        work.duties = linesToList(readKey(root, "duties"));
+        work.solution = readKey(root, "solution");
+        work.outcome = readKey(root, "outcome");
+        work.metrics = collectPairs(readKey(root, "metrics")).map((p) => ({ value: p.left, label: p.right }));
+        work.lists = parseLists(readKey(root, "lists"));
+        work.paper = {
+          title: readKey(root, "paper.title"),
+          venue: readKey(root, "paper.venue"),
+          doi: readKey(root, "paper.doi"),
+        };
+        work.links = collectPairs(readKey(root, "links")).map((p) => ({ label: p.left, url: p.right }));
+      }
+
+      function collectAll() {
+        collectSite();
+        collectWork();
+      }
+
+      async function load() {
+        const res = await fetch("/api/content");
+        const data = await res.json();
+        site = data.site;
+        works = data.works;
+        renderSite();
+        renderWorks();
+        renderUploads();
+      }
+
+      async function save() {
+        collectAll();
+        setStatus("正在保存…");
+        const res = await fetch("/api/content", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ site, works }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          setStatus(data.error || "保存失败", true);
+          return;
+        }
+        setStatus(data.removed?.length ? `已生成。删除了 ${data.removed.join("、")}` : "已生成中文首页和详情页。");
+        renderWorks();
+      }
+
+      async function upload(kind, file, slug = "") {
+        const body = new FormData();
+        body.append("kind", kind);
+        body.append("file", file);
+        if (slug) body.append("slug", slug);
+        const res = await fetch("/api/upload", { method: "POST", body });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "上传失败");
+        return data.path;
+      }
+
+      document.querySelector(".tabs").addEventListener("click", (event) => {
+        const btn = event.target.closest("button[data-tab]");
+        if (!btn) return;
+        collectAll();
+        document.querySelectorAll(".tabs button").forEach((el) => el.classList.toggle("active", el === btn));
+        document.querySelectorAll(".panel").forEach((el) => el.classList.toggle("active", el.id === `tab-${btn.dataset.tab}`));
+        if (btn.dataset.tab === "site") renderSite();
+        if (btn.dataset.tab === "works") renderWorks();
+        if (btn.dataset.tab === "uploads") renderUploads();
+      });
+
+      $("save-btn").addEventListener("click", () => save().catch((err) => setStatus(err.message, true)));
+
+      document.body.addEventListener("click", (event) => {
+        const open = event.target.closest("[data-open]");
+        if (open) {
+          collectWork();
+          current = Number(open.dataset.open);
+          renderWorks();
+        }
+        if (event.target.id === "add-work") {
+          collectWork();
+          works.push(emptyWork());
+          current = works.length - 1;
+          renderWorks();
+        }
+        if (event.target.id === "delete-work" && works.length > 1) {
+          works.splice(current, 1);
+          current = Math.max(0, current - 1);
+          renderWorks();
+        }
+        if (event.target.id === "move-up" && current > 0) {
+          collectWork();
+          [works[current - 1], works[current]] = [works[current], works[current - 1]];
+          current -= 1;
+          renderWorks();
+        }
+        if (event.target.id === "move-down" && current < works.length - 1) {
+          collectWork();
+          [works[current + 1], works[current]] = [works[current], works[current + 1]];
+          current += 1;
+          renderWorks();
+        }
+      });
+
+      document.body.addEventListener("change", async (event) => {
+        const input = event.target;
+        if (input.matches("[data-upload]") && input.files?.[0]) {
+          try {
+            collectAll();
+            const kind = input.dataset.upload;
+            const slug = kind === "cover" ? works[current]?.slug : "";
+            const path = await upload(kind, input.files[0], slug);
+            if (kind === "portrait") site.portrait = path;
+            if (kind === "cover") works[current].cover = path;
+            setStatus(`已上传：${path}`);
+            if (kind === "cover") renderWorks();
+            if (kind === "portrait") renderUploads();
+          } catch (err) {
+            setStatus(err.message, true);
+          }
+        }
+      });
+
+      load().catch((err) => setStatus(err.message, true));
+    </script>
+  </body>
+</html>

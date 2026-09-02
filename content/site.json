@@ -1,0 +1,150 @@
+{
+  "title": "金可成 | AI 产品经理",
+  "description": "金可成，浙江大学人机交互博士生，AI 产品经理。连接用户需求、设计方案、技术实现与数据验证，落地博物馆导览、知识产权工作台与教育智能体。",
+  "css_version": "1788357258",
+  "portrait": "assets/portrait.png",
+  "portrait_alt": "金可成肖像",
+  "hero": {
+    "eyebrow": "AI 产品经理 · 浙江大学人机交互博士生",
+    "name": "金可成",
+    "lead": "把复杂问题拆成可验证的产品路径：需求分析、方案规划、原型落地，再用数据和现场实验闭环。",
+    "body": "拥有工业设计、交互设计与 AI 系统研究背景，参与多项覆盖 LLM、RAG 与多智能体的 AI + HCI 项目，能够连接用户需求、设计方案、技术实现和数据验证。"
+  },
+  "stats": [
+    {
+      "value": "177,121",
+      "label": "累计用户"
+    },
+    {
+      "value": "10+",
+      "label": "落地场景"
+    },
+    {
+      "value": "8",
+      "label": "篇论文"
+    },
+    {
+      "value": "3",
+      "label": "项发明专利"
+    }
+  ],
+  "about": {
+    "label": "简介",
+    "heading": "用产品方法做 AI 系统",
+    "paragraphs": [
+      "我是浙江大学设计学博士生，方向为人机交互。日常工作更接近 AI 产品经理：从业务痛点出发拆解需求，规划可落地的方案，再协同设计、内容与开发把系统做出来，并用实验或线上数据验证效果。",
+      "最近三年，我同时推进博物馆智能导览的规模化交付、面向专业用户的 Agent 工作流，以及教育场景里的虚拟学生智能体。关注的不是模型本身，而是它在真实场景里是否可信、可控、可被评估。"
+    ],
+    "skills": [
+      {
+        "label": "需求分析",
+        "tone": ""
+      },
+      {
+        "label": "业务流程拆解",
+        "tone": "purple"
+      },
+      {
+        "label": "Agent 工作流设计",
+        "tone": "teal"
+      },
+      {
+        "label": "LLM / RAG",
+        "tone": "orange"
+      },
+      {
+        "label": "原型与交互设计",
+        "tone": ""
+      },
+      {
+        "label": "实验设计与数据验证",
+        "tone": "purple"
+      },
+      {
+        "label": "跨团队协作",
+        "tone": "soft"
+      }
+    ],
+    "education": [
+      {
+        "title": "浙江大学 · 设计学博士",
+        "detail": "硕博连读 · 2024.09 – 2027.06"
+      },
+      {
+        "title": "浙江大学 · 工业设计工程硕士",
+        "detail": "2022.09 – 2024.06"
+      },
+      {
+        "title": "浙江工业大学 · 工业设计学士",
+        "detail": "健行实验班 · 2017.09 – 2021.06"
+      }
+    ],
+    "emails": [
+      "jinkecheng913@foxmail.com",
+      "jkcheng@zju.edu.cn"
+    ]
+  },
+  "projects_section": {
+    "label": "项目",
+    "heading": "从需求到落地的产品实践"
+  },
+  "research_section": {
+    "label": "研究",
+    "heading": "用实验验证自适应交互"
+  },
+  "honors": {
+    "label": "荣誉与技能",
+    "heading": "奖项、论文与常用工具",
+    "papers": {
+      "label": "论文与专利",
+      "stats": [
+        {
+          "value": "8",
+          "label": "篇高水平论文"
+        },
+        {
+          "value": "3",
+          "label": "项发明专利"
+        }
+      ],
+      "items": [
+        "IJHCI、IDC、IUI、UIST、HCII 等会议与期刊",
+        "电子迷宫拼图玩具；虚拟学生课堂训练方法（实审）"
+      ]
+    },
+    "contests": {
+      "label": "竞赛",
+      "items": [
+        "红点设计奖 1 项",
+        "迪拜设计周 Prototypes for Humanity",
+        "戴森设计奖中国区 Top 8",
+        "吉利控股集团第八届吉先锋创新创业大赛冠军",
+        "中国移动应用创新大赛华东赛区一等奖"
+      ]
+    },
+    "awards": {
+      "label": "荣誉",
+      "items": [
+        "浙江大学优秀研究生（2022 – 2025）",
+        "ACM IDC 2024 Best Short Paper Award",
+        "A Design Award Iron Prize"
+      ]
+    },
+    "tools": {
+      "label": "语言与工具",
+      "items": [
+        "雅思 IELTS 6.5（小分 6）；CET-6 / CET-4"
+      ]
+    }
+  },
+  "contact": {
+    "label": "联系",
+    "heading": "一起把 AI 产品做进真实场景",
+    "body": "欢迎邮件沟通产品、研究或合作。简历可直接下载预览。",
+    "email": "jinkecheng913@foxmail.com"
+  },
+  "footer": {
+    "copyright": "© 2026 金可成 · Kecheng Jin",
+    "updated": "更新于 2026.09"
+  }
+}

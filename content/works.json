@@ -1,0 +1,274 @@
+[
+  {
+    "slug": "ai-tour-guide",
+    "type": "project",
+    "kicker": "复杂场景交付",
+    "title": "AI 文旅智能导览产品",
+    "summary": "主导 10+ 博物馆与文化遗产场景的产品与交互设计，围绕不同年龄、兴趣和参观目的做个性化导览。",
+    "card_meta": "2023.05 – 至今 · 深圳快语科技",
+    "tags": [
+      {
+        "label": "数字人",
+        "tone": ""
+      },
+      {
+        "label": "信息架构",
+        "tone": "teal"
+      },
+      {
+        "label": "多项目并行",
+        "tone": "orange"
+      }
+    ],
+    "cover": "assets/ai-tour-guide-cover.jpg",
+    "cover_alt": "AI 文旅智能导览产品界面",
+    "breadcrumb": "AI 文旅智能导览",
+    "eyebrow": "复杂场景交付 / 多项目并行",
+    "detail_title": "AI 文旅智能导览产品",
+    "detail_meta": [
+      "产品与交互设计",
+      "2023.05 – 至今",
+      "深圳快语科技",
+      "持续迭代"
+    ],
+    "lead": "在不同馆方需求、文化叙事和交付节点之间，把数字人导览做成可规模化落地的产品。",
+    "description": "金可成主导的 AI 文旅智能导览产品：覆盖 10+ 博物馆与文化遗产场景，累计 177,121 位用户。",
+    "en_href": "../en/projects.html",
+    "background": "博物馆和遗址公园的参观路径、观众构成、讲解口径差异很大。固定脚本的导览很难同时照顾儿童、亲子、专业观众和赶时间的游客，也难在多个场馆之间复用同一套产品能力。",
+    "duties": [
+      "主导用户需求分析、导览流程、数字人角色设定、信息架构到界面落地的完整设计流程。",
+      "同期推进多个博物馆 / 景区项目，协调客户、内容、设计与开发团队。",
+      "围绕不同年龄、兴趣和参观目的，设计可配置的个性化导览体验。"
+    ],
+    "solution": "把「角色设定—场景语义—讲解策略—交互界面」拆成可复用的产品模块，让同一套数字人能力适配滕王阁、革命纪念馆、考古遗址等不同类型场馆，而不是为每个馆重做一套系统。",
+    "outcome": "",
+    "metrics": [
+      {
+        "value": "177,121",
+        "label": "累计用户"
+      },
+      {
+        "value": "10+",
+        "label": "博物馆与文化遗产场景"
+      }
+    ],
+    "lists": [
+      {
+        "title": "已落地",
+        "items": [
+          "滕王阁景区",
+          "井冈山革命博物馆",
+          "海昏侯遗址公园",
+          "八一起义纪念馆",
+          "辽宁省博物馆",
+          "西夏陵遗址公园",
+          "南越王遗址公园",
+          "刘少奇故居花明楼景区"
+        ]
+      },
+      {
+        "title": "方案设计",
+        "items": [
+          "湖南省博物馆",
+          "鸦片战争博物馆"
+        ]
+      }
+    ],
+    "paper": {
+      "title": "",
+      "venue": "",
+      "doi": ""
+    },
+    "links": []
+  },
+  {
+    "slug": "iipms",
+    "type": "project",
+    "kicker": "0–1 产品落地",
+    "title": "知识产权 AI 工作台 IIPMS",
+    "summary": "面向专利代理师、律师与企业团队，把交底、检索、撰写拆成可校验、可回溯的分阶段 Agent 工作流。",
+    "card_meta": "2025.12 – 至今 · 宁夏辅德律师事务所",
+    "tags": [
+      {
+        "label": "Agent 工作流",
+        "tone": "purple"
+      },
+      {
+        "label": "LangGraph",
+        "tone": ""
+      },
+      {
+        "label": "专业文本",
+        "tone": "teal"
+      }
+    ],
+    "cover": "assets/iipms-cover.jpg",
+    "cover_alt": "知识产权 AI 工作台 IIPMS 首页",
+    "breadcrumb": "IIPMS",
+    "eyebrow": "AI 产品 0–1 落地 / Agent 工作流设计",
+    "detail_title": "知识产权 AI 工作台 IIPMS",
+    "detail_meta": [
+      "产品设计",
+      "2025.12 – 至今",
+      "宁夏辅德律师事务所",
+      "落地中"
+    ],
+    "lead": "把专利撰写从「一次生成长文本」改成可补全、可校验、可人工确认的分阶段工作流。",
+    "description": "面向专利代理师与律师团队的知识产权 AI 工作台：从 0 到 1 设计可校验、可回溯的 Agent 工作流。",
+    "en_href": "../en/projects.html",
+    "background": "专利代理场景里，交底书常常不完整，检索与撰写割裂，长文本生成又难以控制。一次出稿看起来快，后续修改、核验和责任回溯的成本很高。",
+    "duties": [
+      "参与需求调研、业务流程梳理、功能规划、交互设计与原型验证。",
+      "把复杂任务拆成可校验、可回溯的分阶段工作流。",
+      "将专利代理业务规则抽象为可执行的 Agent 流程，并接入企业内部 API 与业务数据。"
+    ],
+    "solution": "基于 LangGraph 设计并嵌入专利申请助手、检索与分类、专利撰写助手等模块，支持多轮信息补全、分阶段生成和人工确认，提高专业文本生成的可控性与可解释性。",
+    "outcome": "完成从业务需求、产品设计到系统接入的闭环：代理师可以在每个阶段停下来核对，而不是面对一份无法拆开的长稿。",
+    "metrics": [
+      {
+        "value": "0 → 1",
+        "label": "企业知识产权辅助工作台落地"
+      },
+      {
+        "value": "3",
+        "label": "核心智能模块：申请、检索分类、撰写"
+      }
+    ],
+    "lists": [],
+    "paper": {
+      "title": "",
+      "venue": "",
+      "doi": ""
+    },
+    "links": []
+  },
+  {
+    "slug": "museum-narrative",
+    "type": "research",
+    "kicker": "JOCCH 在投",
+    "title": "自适应博物馆 AI 叙事系统",
+    "summary": "从参观体验痛点出发，规划叙事策略与验证方案，用 RAG 与多智能体保证内容可信、叙事个性化。",
+    "card_meta": "2025.03 – 至今 · 现场实验 32 人",
+    "tags": [
+      {
+        "label": "RAG",
+        "tone": ""
+      },
+      {
+        "label": "多智能体",
+        "tone": "purple"
+      },
+      {
+        "label": "好奇心",
+        "tone": "teal"
+      }
+    ],
+    "cover": "assets/curinarrator-cover.jpg",
+    "cover_alt": "CuriNarrator 博物馆 AI 叙事对话与生成流程",
+    "breadcrumb": "博物馆 AI 叙事",
+    "eyebrow": "主要科研经历",
+    "detail_title": "自适应博物馆 AI 叙事系统",
+    "detail_meta": [
+      "研究与产品化",
+      "2025.03 – 至今",
+      "JOCCH 在投 · 中科院二区"
+    ],
+    "lead": "让博物馆讲解同时满足内容可信、叙事个性化和交互可持续，并用现场实验验证策略差异。",
+    "description": "面向博物馆参观体验的自适应 AI 叙事系统：3 种叙事策略、现场实验 32 人，论文在投 JOCCH。",
+    "en_href": "../en/publications.html",
+    "background": "参观体验的痛点可以拆成三类：内容是否可信、叙事是否贴着这个人、互动能否持续。现成的大模型讲解很容易在这三点上同时失手。",
+    "duties": [
+      "规划 3 种叙事策略及 4 条件验证方案。",
+      "整合 LLM API、RAG、向量检索、n8n 与多智能体工作流，推进内容生成、知识校验、叙事调度和用户反馈。",
+      "组织 32 名博物馆访客完成现场实验，协调招募、执行、数据分析和论文交付。"
+    ],
+    "solution": "用检索增强把讲解钉在馆方知识上，用多智能体拆开生成、校验和调度，再用混合效应模型与主题分析比较不同策略对好奇心和互动深度的影响。",
+    "outcome": "",
+    "metrics": [
+      {
+        "value": "32",
+        "label": "博物馆访客现场实验"
+      },
+      {
+        "value": "3 × 4",
+        "label": "叙事策略 × 验证条件"
+      }
+    ],
+    "lists": [],
+    "paper": {
+      "title": "Gaps, Gains, and Guidance: Curiosity-Oriented Strategies for AI-Mediated Museum Interpretation",
+      "venue": "JOCCH 在投",
+      "doi": ""
+    },
+    "links": []
+  },
+  {
+    "slug": "simteaching",
+    "type": "research",
+    "kicker": "IJHCI 录用 · CCF B",
+    "title": "SimTeaching 虚拟课堂",
+    "summary": "用 GPT 驱动的虚拟学生，让师范生在可重复的 3D 课堂里练习互动，并显著提升教学自我效能。",
+    "card_meta": "2023.03 – 2025.08 · 对照实验 40 人",
+    "tags": [
+      {
+        "label": "GPT Mask",
+        "tone": "orange"
+      },
+      {
+        "label": "Unity3D",
+        "tone": ""
+      },
+      {
+        "label": "教师培训",
+        "tone": "soft"
+      }
+    ],
+    "cover": "assets/simteaching-cover.jpg",
+    "cover_alt": "SimTeaching 虚拟课堂：师范生与虚拟学生互动",
+    "breadcrumb": "SimTeaching",
+    "eyebrow": "主要科研经历",
+    "detail_title": "SimTeaching：AI 虚拟课堂教师培训",
+    "detail_meta": [
+      "系统与实验",
+      "2023.03 – 2025.08",
+      "IJHCI 录用 · CCF B"
+    ],
+    "lead": "让师范生对着会回应的虚拟学生练课，而不是对着空教室彩排。",
+    "description": "SimTeaching：用 GPT 驱动的虚拟学生训练职前教师。40 人对照实验显示教学自我效能显著提升，IJHCI 录用。",
+    "en_href": "../en/projects.html",
+    "background": "教师培训缺少真实、可重复的互动演练。示范课常常没有学生，角色扮演又难规模化，课堂突发事件更无法按需重来。",
+    "duties": [
+      "通过多名资深教师和师范生访谈梳理业务痛点。",
+      "把需求转化为虚拟学生行为、课堂事件、语音交互和训练评估指标。",
+      "协同设计 Unity3D 场景、GPT-4 学生智能体和语音交互链路，并提出 GPT Mask 约束框架。"
+    ],
+    "solution": "GPT Mask 用来压低角色行为偏离和课堂情境不一致的风险：学生智能体可以互动，但不能脱离课堂目标四处发挥。",
+    "outcome": "",
+    "metrics": [
+      {
+        "value": "40",
+        "label": "人对照实验与数据分析"
+      },
+      {
+        "value": "p < 0.001",
+        "label": "教学自我效能显著提升"
+      }
+    ],
+    "lists": [],
+    "paper": {
+      "title": "SimTeaching: An AI-Powered Virtual Classroom for Enhancing Pre-Service Teacher Training Through Interactive Virtual Students",
+      "venue": "IJHCI",
+      "doi": "https://doi.org/10.1080/10447318.2026.2631683"
+    },
+    "links": [
+      {
+        "label": "阅读论文",
+        "url": "https://doi.org/10.1080/10447318.2026.2631683"
+      },
+      {
+        "label": "观看演示视频",
+        "url": "https://youtu.be/LAeK2XecoaA"
+      }
+    ]
+  }
+]

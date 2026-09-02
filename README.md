@@ -28,7 +28,31 @@ https://jkc1309-sudo.github.io/myweb/
 ├── script.js
 ├── Jin_CV.pdf                 # 英文简历
 ├── Jin_CV_zh.pdf              # 中文简历
-└── assets/
+├── assets/
+├── content/                   # 中文站可编辑内容
+├── templates/                 # 生成首页 / 详情页的模板
+└── admin/                     # 本机内容管理后台
+```
+
+## 本机内容管理
+
+只监听本机，用来改中文站文案、增删作品、上传封面和简历。保存后会重写 `index.html` 和 `projects/*.html`。英文站需另改。
+
+```bash
+python3 -m pip install -r requirements-admin.txt
+python3 admin/server.py
+# 管理后台 http://127.0.0.1:8787/admin
+# 站点预览 http://127.0.0.1:8787/
+```
+
+1. 在后台改内容或上传文件，点「保存并生成」。
+2. 同一端口打开首页核对。
+3. 确认后提交并推送到 `main`，GitHub Pages 照旧发布。
+
+仅重新生成静态页、不启动服务：
+
+```bash
+python3 admin/server.py --generate
 ```
 
 ## 本地预览

@@ -1,0 +1,13 @@
+{% macro pill(tag) -%}
+<span class="pill{% if tag.tone %} pill-{{ tag.tone }}{% endif %}">{{ tag.label }}</span>
+{%- endmacro %}
+
+{% macro site_footer(site) %}
+      <footer class="site-footer rich">
+        <div class="footer-bar">
+          <p>{{ site.footer.copyright }}</p>
+          <p>{{ site.footer.updated }}</p>
+          <a href="#top" class="js-back-to-top">返回顶部 ↑</a>
+        </div>
+      </footer>
+{%- endmacro %}
