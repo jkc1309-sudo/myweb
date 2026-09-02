@@ -1921,19 +1921,16 @@ html[lang="zh-CN"] [id] {
 }
 
 .work-card__media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 220px;
-  padding: 20px;
+  aspect-ratio: 16 / 10;
+  align-self: stretch;
   overflow: hidden;
   background: var(--tile);
 }
 
 .work-card__media img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
   display: block;
 }

@@ -17,7 +17,6 @@ https://jkc1309-sudo.github.io/myweb/
 ├── projects/                  # 中文项目详情
 │   ├── ai-tour-guide.html
 │   ├── iipms.html
-│   ├── ai-fitness.html
 │   ├── museum-narrative.html
 │   └── simteaching.html
 ├── en/                        # 英文学术站
@@ -31,8 +30,6 @@ https://jkc1309-sudo.github.io/myweb/
 ├── Jin_CV_zh.pdf              # 中文简历
 └── assets/
 ```
-
-IIPMS 与 AI 健身教练封面待补：把截图放到 `assets/iipms-cover.png`、`assets/fitness-cover.png` 后，改对应页面的封面即可。
 
 ## 本地预览
 
