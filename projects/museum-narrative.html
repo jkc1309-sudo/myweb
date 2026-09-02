@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自适应博物馆 AI 叙事系统 | 金可成</title>
+    <meta
+      name="description"
+      content="面向博物馆参观体验的自适应 AI 叙事系统：3 种叙事策略、现场实验 32 人，论文在投 JOCCH。"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body data-page="project" data-nav="research">
+    <div class="site-shell" id="top">
+      <header class="site-header">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">金</span>
+          <span class="brand-text"><strong>金可成</strong></span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="打开导航">
+          <span></span>
+          <span></span>
+        </button>
+        <div class="header-end">
+          <nav class="site-nav" aria-label="页面导航">
+            <a href="../index.html#about" data-section="about">简介</a>
+            <a href="../index.html#projects" data-section="projects">项目</a>
+            <a href="../index.html#research" data-section="research">研究</a>
+            <a href="../index.html#honors" data-section="honors">荣誉</a>
+            <a href="../index.html#contact" data-section="contact">联系</a>
+            <a class="nav-cta" href="../cv.html" data-section="cv">简历</a>
+          </nav>
+          <nav class="lang-switch" aria-label="语言">
+            <a href="../index.html#research" aria-current="page">中</a>
+            <span aria-hidden="true">/</span>
+            <a href="../en/publications.html" hreflang="en">EN</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="page-intro reveal">
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="../index.html">首页</a>
+            <span>/</span>
+            <a href="../index.html#research">研究</a>
+            <span>/</span>
+            <span>博物馆 AI 叙事</span>
+          </nav>
+          <div class="detail-hero">
+            <p class="eyebrow">主要科研经历</p>
+            <h1>自适应博物馆 AI 叙事系统</h1>
+            <p class="detail-meta">
+              <span>研究与产品化</span>
+              <span>2025.03 – 至今</span>
+              <span>JOCCH 在投 · 中科院二区</span>
+            </p>
+            <p class="lead">
+              让博物馆讲解同时满足内容可信、叙事个性化和交互可持续，并用现场实验验证策略差异。
+            </p>
+          </div>
+          <div class="detail-cover">
+            <img src="../assets/curinarrator-overview.png" alt="自适应博物馆 AI 叙事系统概览" />
+          </div>
+        </section>
+
+        <section class="section reveal">
+          <div class="detail-prose">
+            <h2>背景与问题</h2>
+            <p>
+              参观体验的痛点可以拆成三类：内容是否可信、叙事是否贴着这个人、互动能否持续。现成的大模型讲解很容易在这三点上同时失手。
+            </p>
+            <h2>我的职责</h2>
+            <ul>
+              <li>规划 3 种叙事策略及 4 条件验证方案。</li>
+              <li>整合 LLM API、RAG、向量检索、n8n 与多智能体工作流，推进内容生成、知识校验、叙事调度和用户反馈。</li>
+              <li>组织 32 名博物馆访客完成现场实验，协调招募、执行、数据分析和论文交付。</li>
+            </ul>
+            <h2>方案与实现</h2>
+            <p>
+              用检索增强把讲解钉在馆方知识上，用多智能体拆开生成、校验和调度，再用混合效应模型与主题分析比较不同策略对好奇心和互动深度的影响。
+            </p>
+            <h2>结果与验证</h2>
+            <div class="result-callout">
+              <article>
+                <strong>32</strong>
+                <span>博物馆访客现场实验</span>
+              </article>
+              <article>
+                <strong>3 × 4</strong>
+                <span>叙事策略 × 验证条件</span>
+              </article>
+            </div>
+            <p>
+              研究成果：<em>Gaps, Gains, and Guidance: Curiosity-Oriented Strategies for AI-Mediated Museum Interpretation</em>（JOCCH 在投）。
+            </p>
+          </div>
+        </section>
+
+        <section class="section alt reveal">
+          <div class="project-pager">
+            <a href="ai-fitness.html">← AI 健身教练</a>
+            <a href="simteaching.html">SimTeaching 虚拟课堂 →</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer rich">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <strong>金可成 · Kecheng Jin</strong>
+            <p>AI 产品经理，浙江大学人机交互博士生。</p>
+            <a href="mailto:jinkecheng913@foxmail.com">jinkecheng913@foxmail.com</a>
+          </div>
+          <div class="footer-col">
+            <strong>导航</strong>
+            <a href="../index.html#about">简介</a>
+            <a href="../index.html#projects">项目</a>
+            <a href="../index.html#research">研究</a>
+            <a href="../cv.html">简历</a>
+          </div>
+          <div class="footer-col">
+            <strong>友链</strong>
+            <a href="https://github.com/jkc1309-sudo/myweb" target="_blank" rel="noopener">GitHub</a>
+            <a href="../en/publications.html" hreflang="en">English site</a>
+          </div>
+        </div>
+        <div class="footer-bar">
+          <p>© 2026 金可成 · Kecheng Jin</p>
+          <p>更新于 2026.09</p>
+          <a href="#top" class="js-back-to-top">返回顶部 ↑</a>
+        </div>
+      </footer>
+    </div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">↑</button>
+  </body>
+</html>

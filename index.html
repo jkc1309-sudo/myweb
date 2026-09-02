@@ -1,109 +1,344 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kecheng Jin | HCI Researcher</title>
+    <title>金可成 | AI 产品经理</title>
     <meta
       name="description"
-      content="Kecheng Jin is an HCI researcher exploring generative AI, adaptive interaction, embodied agents, and interactive systems for learning and cultural engagement."
+      content="金可成，浙江大学人机交互博士生，AI 产品经理。连接用户需求、设计方案、技术实现与数据验证，落地博物馆导览、知识产权工作台与教育智能体。"
     />
     <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
   </head>
   <body data-page="home">
-    <div class="site-shell">
+    <div class="site-shell" id="top">
       <header class="site-header">
         <a class="brand" href="index.html">
-          <span class="brand-mark">KJ</span>
-          <span class="brand-text">
-            <strong>Kecheng Jin</strong>
-            <span>HCI / Generative AI / Interactive Systems</span>
-          </span>
+          <span class="brand-mark">金</span>
+          <span class="brand-text"><strong>金可成</strong></span>
         </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="打开导航">
           <span></span>
           <span></span>
         </button>
-        <nav class="site-nav">
-          <a href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="publications.html">Publications</a>
-          <a href="cv.html">CV</a>
-        </nav>
+        <div class="header-end">
+          <nav class="site-nav" aria-label="页面导航">
+            <a href="#about" data-section="about">简介</a>
+            <a href="#projects" data-section="projects">项目</a>
+            <a href="#research" data-section="research">研究</a>
+            <a href="#honors" data-section="honors">荣誉</a>
+            <a href="#contact" data-section="contact">联系</a>
+            <a class="nav-cta" href="cv.html" data-section="cv">简历</a>
+          </nav>
+          <nav class="lang-switch" aria-label="语言">
+            <a href="index.html" aria-current="page">中</a>
+            <span aria-hidden="true">/</span>
+            <a href="en/index.html" hreflang="en">EN</a>
+          </nav>
+        </div>
       </header>
 
       <main>
         <section class="hero reveal">
-          <div class="hero-copy">
-            <p class="eyebrow">Ph.D. Student in Human-Computer Interaction</p>
-            <h1>Kecheng Jin</h1>
-            <p class="lead">
-              I design and study generative AI systems, narrative agents, and embodied interactions that
-              respond to people in real-world museum, education, and creative contexts.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="projects.html">View Projects</a>
-              <a class="button button-secondary" href="publications.html">Publications</a>
-              <a class="button button-tertiary" href="cv.html">Academic CV</a>
-            </div>
-          </div>
-
-          <aside class="hero-panel">
-            <div class="portrait-card">
-              <div class="portrait-photo">
-                <img src="assets/portrait.png" alt="Portrait of Kecheng Jin on the coast of Jeju Island" />
+          <div class="hero-split">
+            <div class="hero-copy">
+              <p class="eyebrow">AI 产品经理 · 浙江大学人机交互博士生</p>
+              <h1>金可成</h1>
+              <p class="lead">
+                把复杂问题拆成可验证的产品路径：需求分析、方案规划、原型落地，再用数据和现场实验闭环。
+              </p>
+              <p>
+                拥有工业设计、交互设计与 AI 系统研究背景，参与多项覆盖 LLM、RAG 与多智能体的 AI + HCI
+                项目，能够连接用户需求、设计方案、技术实现和数据验证。
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="#projects">查看项目</a>
+                <a class="button button-secondary" href="cv.html">查看简历</a>
+                <a class="button button-tertiary" href="mailto:jinkecheng913@foxmail.com">发邮件</a>
               </div>
-              <dl class="profile-facts">
-                <div>
-                  <dt>Base</dt>
-                  <dd>Zhejiang University</dd>
-                </div>
-                <div>
-                  <dt>Email</dt>
-                  <dd><a href="mailto:jkcheng@zju.edu.cn">jkcheng@zju.edu.cn</a></dd>
-                </div>
-                <div>
-                  <dt>Focus</dt>
-                  <dd>HCI, Generative AI, Adaptive Interaction</dd>
-                </div>
-                <div>
-                  <dt>Current Thread</dt>
-                  <dd>Observable user states in adaptive museum digital humans</dd>
-                </div>
-              </dl>
             </div>
-          </aside>
+            <aside class="hero-panel">
+              <div class="hero-portrait">
+                <img src="assets/portrait.png" alt="金可成肖像" />
+              </div>
+            </aside>
+          </div>
+          <div class="stat-band">
+            <article>
+              <strong>177,121</strong>
+              <span>累计用户</span>
+            </article>
+            <article>
+              <strong>10+</strong>
+              <span>落地场景</span>
+            </article>
+            <article>
+              <strong>8</strong>
+              <span>篇论文</span>
+            </article>
+            <article>
+              <strong>3</strong>
+              <span>项发明专利</span>
+            </article>
+          </div>
         </section>
 
-        <section class="section themes reveal">
-          <div class="section-heading">
-            <p class="section-label">Research Interests</p>
-            <h2>Core themes</h2>
+        <section class="section alt" id="about" data-section-id="about">
+          <div class="section-heading reveal">
+            <p class="section-label">简介</p>
+            <h2>用产品方法做 AI 系统</h2>
           </div>
-          <div class="theme-cloud">
-            <span class="chip chip-sm chip-soft">Curiosity</span>
-            <span class="chip chip-md chip-ghost">Embodiment</span>
-            <span class="chip chip-xl chip-blue">Human-Computer Interaction</span>
-            <span class="chip chip-sm chip-ghost">Storytelling</span>
-            <span class="chip chip-md chip-soft">Prototyping</span>
-            <span class="chip chip-lg chip-purple">Generative AI</span>
-            <span class="chip chip-lg chip-orange">Adaptive Interaction</span>
-            <span class="chip chip-sm chip-ghost">Cultural Heritage</span>
-            <span class="chip chip-md chip-teal">Museum Narrative Systems</span>
-            <span class="chip chip-sm chip-soft">Curatorial Practice</span>
-            <span class="chip chip-md chip-ink">AI Agents / Digital Humans</span>
-            <span class="chip chip-sm chip-ghost">Tangible Interaction</span>
-            <span class="chip chip-md chip-soft">Interactive Learning Technologies</span>
-            <span class="chip chip-sm chip-ghost">Child-Computer Interaction</span>
+          <div class="about-grid reveal">
+            <div class="about-copy">
+              <p>
+                我是浙江大学设计学博士生，方向为人机交互。日常工作更接近 AI
+                产品经理：从业务痛点出发拆解需求，规划可落地的方案，再协同设计、内容与开发把系统做出来，并用实验或线上数据验证效果。
+              </p>
+              <p>
+                最近三年，我同时推进博物馆智能导览的规模化交付、面向专业用户的 Agent
+                工作流，以及教育场景里的虚拟学生智能体。关注的不是模型本身，而是它在真实场景里是否可信、可控、可被评估。
+              </p>
+              <div class="skill-cloud">
+                <span class="pill">需求分析</span>
+                <span class="pill pill-purple">业务流程拆解</span>
+                <span class="pill pill-teal">Agent 工作流设计</span>
+                <span class="pill pill-orange">LLM / RAG</span>
+                <span class="pill">原型与交互设计</span>
+                <span class="pill pill-purple">实验设计与数据验证</span>
+                <span class="pill pill-soft">跨团队协作</span>
+              </div>
+            </div>
+            <aside class="about-side">
+              <div class="side-card">
+                <h3>教育经历</h3>
+                <ul class="edu-list">
+                  <li>
+                    <strong>浙江大学 · 设计学博士</strong>
+                    <span>硕博连读 · 2024.09 – 2027.06</span>
+                  </li>
+                  <li>
+                    <strong>浙江大学 · 工业设计工程硕士</strong>
+                    <span>2022.09 – 2024.06</span>
+                  </li>
+                  <li>
+                    <strong>浙江工业大学 · 工业设计学士</strong>
+                    <span>健行实验班 · 2017.09 – 2021.06</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="side-card">
+                <h3>联系方式</h3>
+                <div class="contact-list">
+                  <a href="mailto:jinkecheng913@foxmail.com">jinkecheng913@foxmail.com</a>
+                  <a href="mailto:jkcheng@zju.edu.cn">jkcheng@zju.edu.cn</a>
+                </div>
+              </div>
+            </aside>
           </div>
         </section>
 
+        <section class="section" id="projects" data-section-id="projects">
+          <div class="section-heading reveal">
+            <p class="section-label">项目</p>
+            <h2>从需求到落地的产品实践</h2>
+          </div>
+          <div class="work-grid reveal">
+            <a class="work-card" href="projects/ai-tour-guide.html">
+              <div class="work-card__media">
+                <img src="assets/frame-1321317512.png" alt="博物馆智能导览数字人界面" />
+              </div>
+              <div class="work-card__body">
+                <p class="card-kicker">复杂场景交付</p>
+                <h3>AI 文旅智能导览产品</h3>
+                <p>主导 10+ 博物馆与文化遗产场景的产品与交互设计，围绕不同年龄、兴趣和参观目的做个性化导览。</p>
+                <p class="work-card__meta">2023.05 – 至今 · 深圳快语科技</p>
+                <div class="skill-cloud">
+                  <span class="pill">数字人</span>
+                  <span class="pill pill-teal">信息架构</span>
+                  <span class="pill pill-orange">多项目并行</span>
+                </div>
+                <span class="work-card__arrow">查看详情</span>
+              </div>
+            </a>
+
+            <a class="work-card" href="projects/iipms.html">
+              <div class="work-card__media">
+                <div class="cover-placeholder">知识产权 AI 工作台</div>
+              </div>
+              <div class="work-card__body">
+                <p class="card-kicker">0–1 产品落地</p>
+                <h3>知识产权 AI 工作台 IIPMS</h3>
+                <p>面向专利代理师、律师与企业团队，把交底、检索、撰写拆成可校验、可回溯的分阶段 Agent 工作流。</p>
+                <p class="work-card__meta">2025.12 – 至今 · 宁夏辅德律师事务所</p>
+                <div class="skill-cloud">
+                  <span class="pill pill-purple">Agent 工作流</span>
+                  <span class="pill">LangGraph</span>
+                  <span class="pill pill-teal">专业文本</span>
+                </div>
+                <span class="work-card__arrow">查看详情</span>
+              </div>
+            </a>
+
+            <a class="work-card" href="projects/ai-fitness.html">
+              <div class="work-card__media">
+                <div class="cover-placeholder orange">AI 健身教练</div>
+              </div>
+              <div class="work-card__body">
+                <p class="card-kicker">问答质量优化</p>
+                <h3>AI 健身教练</h3>
+                <p>围绕健身咨询、训练计划和动作指导，明确助手边界，用领域知识和错例迭代提升回答质量。</p>
+                <p class="work-card__meta">2025.08 – 2026.03 · 杭州如泽电子商务</p>
+                <div class="skill-cloud">
+                  <span class="pill pill-orange">领域知识</span>
+                  <span class="pill">评测迭代</span>
+                  <span class="pill pill-soft">问答策略</span>
+                </div>
+                <span class="work-card__arrow">查看详情</span>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section class="section alt" id="research" data-section-id="research">
+          <div class="section-heading reveal">
+            <p class="section-label">研究</p>
+            <h2>用实验验证自适应交互</h2>
+          </div>
+          <div class="work-grid reveal">
+            <a class="work-card" href="projects/museum-narrative.html">
+              <div class="work-card__media">
+                <img src="assets/curinarrator-overview.png" alt="博物馆 AI 叙事系统概览" />
+              </div>
+              <div class="work-card__body">
+                <p class="card-kicker">JOCCH 在投</p>
+                <h3>自适应博物馆 AI 叙事系统</h3>
+                <p>从参观体验痛点出发，规划叙事策略与验证方案，用 RAG 与多智能体保证内容可信、叙事个性化。</p>
+                <p class="work-card__meta">2025.03 – 至今 · 现场实验 32 人</p>
+                <div class="skill-cloud">
+                  <span class="pill">RAG</span>
+                  <span class="pill pill-purple">多智能体</span>
+                  <span class="pill pill-teal">好奇心</span>
+                </div>
+                <span class="work-card__arrow">查看详情</span>
+              </div>
+            </a>
+
+            <a class="work-card" href="projects/simteaching.html">
+              <div class="work-card__media">
+                <img src="assets/simteaching-overview.png" alt="SimTeaching 虚拟课堂系统概览" />
+              </div>
+              <div class="work-card__body">
+                <p class="card-kicker">IJHCI 录用 · CCF B</p>
+                <h3>SimTeaching 虚拟课堂</h3>
+                <p>用 GPT 驱动的虚拟学生，让师范生在可重复的 3D 课堂里练习互动，并显著提升教学自我效能。</p>
+                <p class="work-card__meta">2023.03 – 2025.08 · 对照实验 40 人</p>
+                <div class="skill-cloud">
+                  <span class="pill pill-orange">GPT Mask</span>
+                  <span class="pill">Unity3D</span>
+                  <span class="pill pill-soft">教师培训</span>
+                </div>
+                <span class="work-card__arrow">查看详情</span>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section class="section" id="honors" data-section-id="honors">
+          <div class="section-heading reveal">
+            <p class="section-label">荣誉与技能</p>
+            <h2>奖项、论文与常用工具</h2>
+          </div>
+          <div class="honor-grid reveal">
+            <article class="honor-card">
+              <p class="section-label">论文与专利</p>
+              <div class="honor-stat">
+                <div>
+                  <strong>8</strong>
+                  <span>篇高水平论文</span>
+                </div>
+                <div>
+                  <strong>3</strong>
+                  <span>项发明专利</span>
+                </div>
+              </div>
+              <ul>
+                <li>IJHCI、IDC、IUI、UIST、HCII 等会议与期刊</li>
+                <li>电子迷宫拼图玩具；虚拟学生课堂训练方法（实审）</li>
+              </ul>
+            </article>
+            <article class="honor-card">
+              <p class="section-label">竞赛</p>
+              <ul>
+                <li>红点设计奖 1 项</li>
+                <li>迪拜设计周 Prototypes for Humanity</li>
+                <li>戴森设计奖中国区 Top 8</li>
+                <li>吉利控股集团第八届吉先锋创新创业大赛冠军</li>
+                <li>中国移动应用创新大赛华东赛区三等奖</li>
+              </ul>
+            </article>
+            <article class="honor-card">
+              <p class="section-label">荣誉</p>
+              <ul>
+                <li>浙江大学优秀研究生（2022 – 2025）</li>
+                <li>ACM IDC 2024 Best Short Paper Award</li>
+                <li>A Design Award Iron Prize</li>
+              </ul>
+            </article>
+            <article class="honor-card">
+              <p class="section-label">语言与工具</p>
+              <ul>
+                <li>雅思 IELTS 6.5（小分 6）；CET-6 / CET-4</li>
+                <li>Figma、Unity3D</li>
+                <li>LangGraph、n8n、向量检索</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section alt" id="contact" data-section-id="contact">
+          <div class="contact-cta reveal">
+            <p class="section-label">联系</p>
+            <h2>一起把 AI 产品做进真实场景</h2>
+            <p>欢迎邮件沟通产品、研究或合作。简历可直接下载预览。</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="mailto:jinkecheng913@foxmail.com">写邮件</a>
+              <a class="button button-secondary" href="cv.html">查看简历</a>
+            </div>
+          </div>
+        </section>
       </main>
 
-      <footer class="site-footer">
-        <p>Kecheng Jin</p>
+      <footer class="site-footer rich">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <strong>金可成 · Kecheng Jin</strong>
+            <p>AI 产品经理，浙江大学人机交互博士生。连接需求、方案、实现与验证。</p>
+            <a href="mailto:jinkecheng913@foxmail.com">jinkecheng913@foxmail.com</a>
+          </div>
+          <div class="footer-col">
+            <strong>导航</strong>
+            <a href="#about">简介</a>
+            <a href="#projects">项目</a>
+            <a href="#research">研究</a>
+            <a href="#honors">荣誉</a>
+            <a href="#contact">联系</a>
+            <a href="cv.html">简历</a>
+          </div>
+          <div class="footer-col">
+            <strong>友链</strong>
+            <a href="https://github.com/jkc1309-sudo/myweb" target="_blank" rel="noopener">GitHub</a>
+            <a href="en/index.html" hreflang="en">English site</a>
+            <a href="mailto:jkcheng@zju.edu.cn">学校邮箱</a>
+          </div>
+        </div>
+        <div class="footer-bar">
+          <p>© 2026 金可成 · Kecheng Jin</p>
+          <p>更新于 2026.09</p>
+          <a href="#top" class="js-back-to-top">返回顶部 ↑</a>
+        </div>
       </footer>
     </div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">↑</button>
   </body>
 </html>

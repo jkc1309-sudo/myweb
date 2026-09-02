@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV | Kecheng Jin</title>
+    <meta
+      name="description"
+      content="Chinese and English CVs for Kecheng Jin. Preview and download on one page."
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../script.js"></script>
+  </head>
+  <body data-page="cv">
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">KJ</span>
+          <span class="brand-text">
+            <strong>Kecheng Jin</strong>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+        </button>
+        <div class="header-end">
+          <nav class="site-nav">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="publications.html">Publications</a>
+            <a href="cv.html">CV</a>
+          </nav>
+          <nav class="lang-switch" aria-label="Language">
+            <a href="../cv.html" hreflang="zh-CN">中</a>
+            <span aria-hidden="true">/</span>
+            <a href="cv.html" aria-current="page">EN</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="page-intro reveal">
+          <p class="eyebrow">CV</p>
+          <p class="lead">
+            Switch between the Chinese and English PDFs on this page. English is shown first here.
+          </p>
+        </section>
+
+        <section class="section reveal">
+          <div
+            class="cv-viewer"
+            data-cv-root
+            data-cv-default="en"
+            data-cv-zh="../Jin_CV_zh.pdf"
+            data-cv-en="../Jin_CV.pdf"
+          >
+            <div class="cv-viewer__toolbar">
+              <div class="cv-lang" role="tablist" aria-label="CV language">
+                <button type="button" role="tab" aria-selected="false" data-cv-lang="zh">中文</button>
+                <button type="button" role="tab" aria-selected="true" data-cv-lang="en">English</button>
+              </div>
+              <div class="cv-viewer__actions">
+                <a class="button button-primary" data-cv-download href="../Jin_CV.pdf" download="Jin_CV.pdf">Download PDF</a>
+                <a class="button button-secondary" data-cv-open href="../Jin_CV.pdf" target="_blank" rel="noopener">Open in new tab</a>
+              </div>
+            </div>
+            <div class="cv-viewer__frame">
+              <iframe data-cv-frame src="../Jin_CV.pdf#view=FitH" title="English CV of Kecheng Jin" loading="lazy"></iframe>
+              <noscript>
+                <p class="cv-viewer__fallback">
+                  Your browser cannot display the embedded PDF.
+                  <a href="../Jin_CV.pdf">English CV</a>
+                  or
+                  <a href="../Jin_CV_zh.pdf">Chinese CV</a>.
+                </p>
+              </noscript>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Kecheng Jin</p>
+        <a href="../cv.html" hreflang="zh-CN">中文主站</a>
+      </footer>
+    </div>
+  </body>
+</html>

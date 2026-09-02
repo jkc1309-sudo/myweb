@@ -1,121 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV | Kecheng Jin</title>
+    <title>简历 | 金可成</title>
     <meta
       name="description"
-      content="Downloadable CV for Kecheng Jin, Ph.D. student in Human-Computer Interaction at Zhejiang University."
+      content="金可成的中英文简历预览与下载。浙江大学人机交互博士生，AI 产品经理。"
     />
     <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
-    <style>
-      .cv-viewer {
-        max-width: var(--max-width);
-        margin: 0 auto;
-        display: grid;
-        gap: 20px;
-      }
-
-      .cv-viewer__actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: flex-end;
-      }
-
-      .cv-viewer__frame {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 1 / 1.35;
-        max-height: 85vh;
-        border-radius: 24px;
-        overflow: hidden;
-        background: var(--tile, #f5f5f7);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.08);
-      }
-
-      .cv-viewer__frame iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-        display: block;
-      }
-
-      .cv-viewer__fallback {
-        padding: 24px;
-        text-align: center;
-        font-size: 0.95rem;
-        color: var(--muted, #6e6e73);
-      }
-
-      body[data-page="cv"] .page-intro {
-        padding-top: 45px;
-        padding-bottom: 45px;
-      }
-
-      body[data-page="cv"] .page-intro .eyebrow {
-        margin-bottom: 0;
-      }
-
-      @media (max-width: 720px) {
-        .cv-viewer__frame {
-          aspect-ratio: 1 / 1.6;
-          border-radius: 18px;
-        }
-
-        .cv-viewer__actions {
-          justify-content: center;
-        }
-      }
-    </style>
   </head>
-  <body data-page="cv">
-    <div class="site-shell">
+  <body data-page="cv" data-nav="cv">
+    <div class="site-shell" id="top">
       <header class="site-header">
         <a class="brand" href="index.html">
-          <span class="brand-mark">KJ</span>
-          <span class="brand-text">
-            <strong>Kecheng Jin</strong>
-            <span>HCI / Generative AI / Interactive Systems</span>
-          </span>
+          <span class="brand-mark">金</span>
+          <span class="brand-text"><strong>金可成</strong></span>
         </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="打开导航">
           <span></span>
           <span></span>
         </button>
-        <nav class="site-nav">
-          <a href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="publications.html">Publications</a>
-          <a href="cv.html">CV</a>
-        </nav>
+        <div class="header-end">
+          <nav class="site-nav" aria-label="页面导航">
+            <a href="index.html#about" data-section="about">简介</a>
+            <a href="index.html#projects" data-section="projects">项目</a>
+            <a href="index.html#research" data-section="research">研究</a>
+            <a href="index.html#honors" data-section="honors">荣誉</a>
+            <a href="index.html#contact" data-section="contact">联系</a>
+            <a class="nav-cta" href="cv.html" data-section="cv">简历</a>
+          </nav>
+          <nav class="lang-switch" aria-label="语言">
+            <a href="cv.html" aria-current="page">中</a>
+            <span aria-hidden="true">/</span>
+            <a href="en/cv.html" hreflang="en">EN</a>
+          </nav>
+        </div>
       </header>
 
       <main>
         <section class="page-intro reveal">
-          <p class="eyebrow">CV</p>
-          <p class="lead">
-            Preview the full CV below, or download a copy for later reading.
-          </p>
+          <p class="eyebrow">简历</p>
+          <h1>预览或下载</h1>
+          <p class="lead">同一页可切换中文与英文 PDF，默认显示中文版。</p>
         </section>
 
         <section class="section reveal">
-          <div class="cv-viewer">
-            <div class="cv-viewer__actions">
-              <a class="button button-primary" href="Jin_CV.pdf" download="Jin_CV.pdf">Download PDF</a>
-              <a class="button button-secondary" href="Jin_CV.pdf" target="_blank" rel="noopener">Open in new tab</a>
+          <div
+            class="cv-viewer"
+            data-cv-root
+            data-cv-default="zh"
+            data-cv-zh="Jin_CV_zh.pdf"
+            data-cv-en="Jin_CV.pdf"
+          >
+            <div class="cv-viewer__toolbar">
+              <div class="cv-lang" role="tablist" aria-label="简历语言">
+                <button type="button" role="tab" aria-selected="true" data-cv-lang="zh">中文</button>
+                <button type="button" role="tab" aria-selected="false" data-cv-lang="en">English</button>
+              </div>
+              <div class="cv-viewer__actions">
+                <a class="button button-primary" data-cv-download href="Jin_CV_zh.pdf" download="Jin_CV_zh.pdf">下载 PDF</a>
+                <a class="button button-secondary" data-cv-open href="Jin_CV_zh.pdf" target="_blank" rel="noopener">新标签打开</a>
+              </div>
             </div>
             <div class="cv-viewer__frame">
-              <iframe
-                src="Jin_CV.pdf#view=FitH"
-                title="CV of Kecheng Jin"
-                loading="lazy"
-              ></iframe>
+              <iframe data-cv-frame src="Jin_CV_zh.pdf#view=FitH" title="金可成中文简历" loading="lazy"></iframe>
               <noscript>
                 <p class="cv-viewer__fallback">
-                  Your browser cannot display the embedded PDF. <a href="Jin_CV.pdf">Download the CV</a> instead.
+                  浏览器无法内嵌 PDF，请下载
+                  <a href="Jin_CV_zh.pdf">中文简历</a>
+                  或
+                  <a href="Jin_CV.pdf">英文简历</a>。
                 </p>
               </noscript>
             </div>
@@ -123,9 +79,33 @@
         </section>
       </main>
 
-      <footer class="site-footer">
-        <p>Kecheng Jin</p>
+      <footer class="site-footer rich">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <strong>金可成 · Kecheng Jin</strong>
+            <p>AI 产品经理，浙江大学人机交互博士生。</p>
+            <a href="mailto:jinkecheng913@foxmail.com">jinkecheng913@foxmail.com</a>
+          </div>
+          <div class="footer-col">
+            <strong>导航</strong>
+            <a href="index.html#about">简介</a>
+            <a href="index.html#projects">项目</a>
+            <a href="index.html#research">研究</a>
+            <a href="cv.html">简历</a>
+          </div>
+          <div class="footer-col">
+            <strong>友链</strong>
+            <a href="https://github.com/jkc1309-sudo/myweb" target="_blank" rel="noopener">GitHub</a>
+            <a href="en/cv.html" hreflang="en">English site</a>
+          </div>
+        </div>
+        <div class="footer-bar">
+          <p>© 2026 金可成 · Kecheng Jin</p>
+          <p>更新于 2026.09</p>
+          <a href="#top" class="js-back-to-top">返回顶部 ↑</a>
+        </div>
       </footer>
     </div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">↑</button>
   </body>
 </html>
