@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
 :root {
   --bg: #fbfbfd;
   --surface: #ffffff;
@@ -97,36 +99,17 @@ svg {
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  line-height: 1;
 }
 
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 7px;
-  background: var(--ink);
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.brand-text {
-  display: flex;
-  align-items: center;
-}
-
-.brand-text strong {
-  font-size: 0.88rem;
-  font-weight: 500;
+.brand-script {
+  font-family: "Great Vibes", "Snell Roundhand", "Segoe Script", cursive;
+  font-size: 1.7rem;
+  font-weight: 400;
   color: var(--ink);
-  letter-spacing: -0.01em;
-}
-
-.brand-text span {
-  display: none;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  padding-top: 6px;
 }
 
 .site-nav {
@@ -2147,7 +2130,6 @@ html[lang="zh-CN"] [id] {
   flex-wrap: wrap;
   gap: 8px 20px;
   justify-content: space-between;
-  border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.78rem;
 }
