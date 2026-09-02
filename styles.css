@@ -1730,23 +1730,52 @@ html[lang="zh-CN"] [id] {
 }
 
 .hero-split .hero-panel {
+  position: relative;
   margin: 0;
   max-width: none;
 }
 
 .hero-portrait {
+  position: relative;
   aspect-ratio: 4 / 5;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--tile);
-  box-shadow: var(--shadow-sm);
+  overflow: visible;
+  background: transparent;
+}
+
+.hero-portrait__glow {
+  position: absolute;
+  inset: 6% -8% 4% -4%;
+  background:
+    radial-gradient(ellipse 70% 60% at 62% 38%, rgba(0, 113, 227, 0.22), transparent 68%),
+    radial-gradient(ellipse 55% 50% at 28% 78%, rgba(48, 176, 199, 0.16), transparent 70%),
+    radial-gradient(ellipse 40% 36% at 80% 72%, rgba(175, 82, 222, 0.08), transparent 72%);
+  filter: blur(36px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero-portrait img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 28%;
+  object-position: 62% 22%;
+  display: block;
+  -webkit-mask-image: radial-gradient(ellipse 78% 74% at 54% 40%, #000 38%, transparent 78%);
+  mask-image: radial-gradient(ellipse 78% 74% at 54% 40%, #000 38%, transparent 78%);
+}
+
+.hero-portrait::after {
+  content: "";
+  position: absolute;
+  inset: -2%;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--surface) 0%, transparent 22%),
+    linear-gradient(180deg, var(--surface) 0%, transparent 18%, transparent 78%, var(--surface) 100%),
+    radial-gradient(ellipse 80% 75% at 54% 42%, transparent 46%, var(--surface) 86%);
 }
 
 .stat-band {
