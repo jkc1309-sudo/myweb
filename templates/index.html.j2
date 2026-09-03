@@ -192,6 +192,9 @@
                 <li>{{ item }}</li>
                 {% endfor %}
               </ul>
+              {% if site.honors.contests.href %}
+              <a class="work-card__arrow" href="{{ site.honors.contests.href }}">{{ site.honors.contests.cta or '查看获奖作品' }}</a>
+              {% endif %}
             </article>
             <article class="honor-card">
               <p class="section-label">{{ site.honors.awards.label }}</p>

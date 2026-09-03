@@ -166,6 +166,8 @@
             </label>
             ${field("论文与专利链接", "honors.papers.href", h.papers.href || "publications.html")}
             ${field("论文与专利按钮", "honors.papers.cta", h.papers.cta || "查看论文与专利")}
+            ${field("竞赛作品链接", "honors.contests.href", h.contests.href || "awards.html")}
+            ${field("竞赛作品按钮", "honors.contests.cta", h.contests.cta || "查看获奖作品")}
             <label>竞赛
               <textarea data-key="honors.contests.items">${h.contests.items.join("\n")}</textarea>
             </label>
@@ -354,8 +356,10 @@
         site.projects_section.heading = readKey(root, "projects_section.heading");
         site.research_section.label = readKey(root, "research_section.label");
         site.research_section.heading = readKey(root, "research_section.heading");
+        const honorsShowcase = site.honors.showcase;
         site.honors.label = readKey(root, "honors.label");
         site.honors.heading = readKey(root, "honors.heading");
+        if (honorsShowcase) site.honors.showcase = honorsShowcase;
         site.honors.papers.stats = collectPairs(readKey(root, "honors.papers.stats")).map((p) => ({
           value: p.left,
           label: p.right,
@@ -363,6 +367,8 @@
         site.honors.papers.href = readKey(root, "honors.papers.href") || "publications.html";
         site.honors.papers.cta = readKey(root, "honors.papers.cta") || "查看论文与专利";
         delete site.honors.papers.items;
+        site.honors.contests.href = readKey(root, "honors.contests.href") || "awards.html";
+        site.honors.contests.cta = readKey(root, "honors.contests.cta") || "查看获奖作品";
         site.honors.contests.items = linesToList(readKey(root, "honors.contests.items"));
         site.honors.awards.items = linesToList(readKey(root, "honors.awards.items"));
         site.honors.tools.items = linesToList(readKey(root, "honors.tools.items"));

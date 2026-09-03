@@ -1,7 +1,7 @@
 {
   "title": "金可成 | AI 产品经理",
   "description": "金可成，浙江大学人机交互博士生，AI 产品经理。连接用户需求、设计方案、技术实现与数据验证，落地博物馆导览、知识产权工作台与教育智能体。",
-  "css_version": "20260903b",
+  "css_version": "20260903d",
   "portrait": "assets/portrait.png",
   "portrait_alt": "金可成肖像",
   "hero": {
@@ -93,8 +93,41 @@
     "heading": "用实验验证自适应交互"
   },
   "honors": {
-    "label": "荣誉与技能",
-    "heading": "奖项、论文与常用工具",
+    "label": "成果与荣誉",
+    "heading": "奖项、论文与专利",
+    "showcase": {
+      "label": "获奖作品",
+      "items": [
+        {
+          "kicker": "2026 红点设计奖",
+          "title": "ScrollDesk",
+          "body": "ScrollDesk 是一款以柔性卷轴屏重构办公桌的自适应数字工作站，旨在探索未来办公场景中屏幕、桌面与身体姿态之间更加自然的交互关系。",
+          "image": "assets/award-scrolldesk.jpg",
+          "alt": "ScrollDesk 柔性卷轴屏数字工作站"
+        },
+        {
+          "kicker": "2026 中国移动应用创新大赛",
+          "title": "MusePlanet 智绘星球",
+          "body": "从观看文物到临摹再创作，基于传统文物的儿童个性化创新创作应用。",
+          "image": "assets/award-museplanet.jpg",
+          "alt": "MusePlanet 智绘星球多屏界面"
+        },
+        {
+          "kicker": "吉利吉先锋创新创业大赛冠军",
+          "title": "P Car",
+          "body": "聚焦户外露营人群，适合越野、露营等户外活动。设有独立的宠物乘坐空间和宠物物品存放，车内休息与社交更舒适，可交互车窗记录旅途中的风景。",
+          "image": "assets/award-pcar.jpg",
+          "alt": "吉利 P Car 户外露营概念车"
+        },
+        {
+          "kicker": "A Design Award Iron Prize",
+          "title": "PolyBeat",
+          "body": "PolyBeat 面向儿童，用有趣、可交互的方式帮助他们学习乐理。几何多边形与音乐节奏有很强的对应关系，可以把节奏声音可视化，帮助儿童理解音乐风格与鼓点节奏型之间的关系，并掌握节奏型。",
+          "image": "assets/award-polybeat.jpg",
+          "alt": "PolyBeat 儿童乐理实体交互玩具"
+        }
+      ]
+    },
     "papers": {
       "label": "论文与专利",
       "href": "publications.html",
@@ -111,13 +144,15 @@
       ]
     },
     "contests": {
-      "label": "竞赛",
+      "label": "设计竞赛",
+      "href": "awards.html",
+      "cta": "查看获奖作品",
       "items": [
         "红点设计奖 1 项",
-        "迪拜设计周 Prototypes for Humanity",
         "戴森设计奖中国区 Top 8",
         "吉利控股集团第八届吉先锋创新创业大赛冠军",
         "中国移动应用创新大赛华东赛区一等奖",
+        "迪拜设计周 Prototypes for Humanity",
         "A Design Award Iron Prize"
       ]
     },
@@ -125,8 +160,7 @@
       "label": "荣誉",
       "items": [
         "浙江大学优秀研究生（2022–2025）",
-        "浙江大学五好研究生（2024-2025）",
-        "ACM IDC 2024 Best Short Paper Award"
+        "浙江大学五好研究生（2024-2025）"
       ]
     },
     "tools": {

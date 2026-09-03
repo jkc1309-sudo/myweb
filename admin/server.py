@@ -64,6 +64,9 @@ def generate_site(site: dict[str, Any], works: list[dict[str, Any]]) -> list[str
     )
     (ROOT / "index.html").write_text(index_html + "\n", encoding="utf-8")
 
+    awards_html = jinja.get_template("awards.html.j2").render(site=site)
+    (ROOT / "awards.html").write_text(awards_html + "\n", encoding="utf-8")
+
     PROJECTS_DIR.mkdir(exist_ok=True)
     kept: set[str] = set()
     count = len(works)

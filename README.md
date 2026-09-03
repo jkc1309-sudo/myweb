@@ -14,6 +14,7 @@ https://jkc1309-sudo.github.io/myweb/
 .
 ├── index.html                 # 中文首页（长滚动）
 ├── publications.html          # 中文论文与专利列表
+├── awards.html                # 设计竞赛获奖作品轮播
 ├── cv.html                    # 中文简历页
 ├── projects/                  # 中文项目详情
 │   ├── ai-tour-guide.html

@@ -149,3 +149,95 @@ if (cvRoot) {
     tab.addEventListener("click", () => setCvLang(tab.dataset.cvLang));
   });
 }
+
+const awardCarousel = document.querySelector("[data-award-carousel]");
+if (awardCarousel) {
+  const cards = [...awardCarousel.querySelectorAll(".award-card")];
+  const dotsRoot = awardCarousel.querySelector(".award-dots");
+  const caption = awardCarousel.querySelector(".award-caption");
+  const kickerNode = caption?.querySelector("[data-award-kicker]");
+  const titleNode = caption?.querySelector("[data-award-title]");
+  const bodyNode = caption?.querySelector("[data-award-body]");
+  const total = cards.length;
+  let current = 0;
+
+  cards.forEach((_, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.setAttribute("role", "tab");
+    dot.setAttribute("aria-label", `第 ${index + 1} 件作品`);
+    dot.addEventListener("click", () => goTo(index));
+    dotsRoot?.append(dot);
+  });
+
+  const dots = [...(dotsRoot?.querySelectorAll("button") || [])];
+
+  function wrappedOffset(index) {
+    let offset = index - current;
+    const half = total / 2;
+    if (offset > half) offset -= total;
+    if (offset < -half) offset += total;
+    return offset;
+  }
+
+  function goTo(index) {
+    current = ((index % total) + total) % total;
+    render();
+  }
+
+  function render() {
+    const spread = Math.min(236, Math.max(132, awardCarousel.clientWidth * 0.28));
+    cards.forEach((card, index) => {
+      const offset = wrappedOffset(index);
+      const far = Math.abs(offset) >= 2;
+      card.style.setProperty("--tx", `${offset * spread}px`);
+      card.style.setProperty("--tz", `${offset === 0 ? 72 : far ? -180 : -36}px`);
+      card.style.setProperty("--ry", `${offset * -34}deg`);
+      card.style.setProperty("--sc", offset === 0 ? "1" : far ? "0.68" : "0.82");
+      card.style.opacity = far ? "0.42" : "1";
+      card.style.zIndex = String(20 - Math.abs(offset) * 4);
+      card.classList.toggle("is-active", offset === 0);
+      card.setAttribute("aria-current", offset === 0 ? "true" : "false");
+    });
+
+    const active = cards[current];
+    if (kickerNode) kickerNode.textContent = active?.dataset.awardKicker || "";
+    if (titleNode) titleNode.textContent = active?.dataset.awardTitle || "";
+    if (bodyNode) bodyNode.textContent = active?.dataset.awardBody || "";
+    dots.forEach((dot, index) => dot.classList.toggle("is-active", index === current));
+  }
+
+  awardCarousel.querySelector(".award-nav--prev")?.addEventListener("click", () => goTo(current - 1));
+  awardCarousel.querySelector(".award-nav--next")?.addEventListener("click", () => goTo(current + 1));
+
+  cards.forEach((card, index) => {
+    card.addEventListener("click", () => {
+      if (index !== current) goTo(index);
+    });
+  });
+
+  awardCarousel.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") goTo(current - 1);
+    if (event.key === "ArrowRight") goTo(current + 1);
+  });
+
+  let touchStartX = 0;
+  awardCarousel.addEventListener(
+    "touchstart",
+    (event) => {
+      touchStartX = event.changedTouches[0]?.clientX || 0;
+    },
+    { passive: true }
+  );
+  awardCarousel.addEventListener(
+    "touchend",
+    (event) => {
+      const delta = (event.changedTouches[0]?.clientX || 0) - touchStartX;
+      if (Math.abs(delta) > 40) goTo(current + (delta < 0 ? 1 : -1));
+    },
+    { passive: true }
+  );
+
+  window.addEventListener("resize", render, { passive: true });
+  render();
+}

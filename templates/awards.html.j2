@@ -1,0 +1,65 @@
+{% from "macros.j2" import site_footer, award_carousel %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>设计竞赛 | 金可成</title>
+    <meta
+      name="description"
+      content="金可成的设计竞赛获奖作品：ScrollDesk、MusePlanet、P Car、PolyBeat。"
+    />
+    <link rel="stylesheet" href="styles.css?v={{ site.css_version }}" />
+    <script defer src="script.js"></script>
+  </head>
+  <body data-page="awards" data-nav="honors">
+    <div class="site-shell" id="top">
+      <header class="site-header">
+        <a class="brand" href="index.html">
+          <span class="brand-script">Kecheng</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="打开导航">
+          <span></span>
+          <span></span>
+        </button>
+        <div class="header-end">
+          <nav class="site-nav" aria-label="页面导航">
+            <a href="index.html#about" data-section="about">简介</a>
+            <a href="index.html#projects" data-section="projects">项目</a>
+            <a href="index.html#research" data-section="research">研究</a>
+            <a href="index.html#honors" data-section="honors">荣誉</a>
+            <a href="index.html#contact" data-section="contact">联系</a>
+            <a class="nav-cta" href="cv.html" data-section="cv">简历</a>
+          </nav>
+          <nav class="lang-switch" aria-label="语言">
+            <a href="awards.html" aria-current="page">中</a>
+            <span aria-hidden="true">/</span>
+            <a href="en/index.html" hreflang="en">EN</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="page-intro reveal">
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="index.html">首页</a>
+            <span>/</span>
+            <a href="index.html#honors">荣誉</a>
+            <span>/</span>
+            <span>设计竞赛</span>
+          </nav>
+          <p class="eyebrow">{{ site.honors.contests.label }}</p>
+          <h1>{{ site.honors.showcase.label }}</h1>
+          <p class="lead">红点、移动应用创新赛、吉利吉先锋与 A Design 等获奖作品。</p>
+        </section>
+
+        <section class="section reveal">
+          {{ award_carousel(site) }}
+        </section>
+      </main>
+
+      {{ site_footer(site) }}
+    </div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">↑</button>
+  </body>
+</html>

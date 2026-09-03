@@ -11,3 +11,32 @@
         </div>
       </footer>
 {%- endmacro %}
+
+{% macro award_carousel(site, image_prefix='') %}
+          <div class="award-showcase reveal" data-award-carousel>
+            <div class="award-stage">
+              <button class="award-nav award-nav--prev" type="button" aria-label="上一件作品">‹</button>
+              <div class="award-track">
+                {% for item in site.honors.showcase['items'] %}
+                <button
+                  class="award-card"
+                  type="button"
+                  data-award-index="{{ loop.index0 }}"
+                  data-award-kicker="{{ item.kicker }}"
+                  data-award-title="{{ item.title }}"
+                  data-award-body="{{ item.body }}"
+                >
+                  <img src="{{ image_prefix }}{{ item.image }}" alt="{{ item.alt or item.title }}" />
+                </button>
+                {% endfor %}
+              </div>
+              <button class="award-nav award-nav--next" type="button" aria-label="下一件作品">›</button>
+            </div>
+            <div class="award-caption" aria-live="polite">
+              <p class="section-label" data-award-kicker></p>
+              <h3 data-award-title></h3>
+              <p data-award-body></p>
+            </div>
+            <div class="award-dots" role="tablist" aria-label="获奖作品"></div>
+          </div>
+{%- endmacro %}
