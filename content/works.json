@@ -79,7 +79,21 @@
       "venue": "",
       "doi": ""
     },
-    "links": []
+    "links": [],
+    "gallery": [
+      {
+        "src": "assets/ai-tour-haihun.jpg",
+        "alt": "海昏侯国遗址公园 AI 讲解落地页"
+      },
+      {
+        "src": "assets/ai-tour-venues.jpg",
+        "alt": "快语 AI 导览场馆列表"
+      },
+      {
+        "src": "assets/ai-tour-liaoning.jpg",
+        "alt": "辽宁省博物馆 AI 智能体导览落地页"
+      }
+    ]
   },
   {
     "slug": "iipms",

@@ -164,9 +164,8 @@
             <label>论文统计（每行：数值 | 标签）
               <textarea data-key="honors.papers.stats">${h.papers.stats.map((s) => `${s.value} | ${s.label}`).join("\n")}</textarea>
             </label>
-            <label>论文与专利条目
-              <textarea data-key="honors.papers.items">${h.papers.items.join("\n")}</textarea>
-            </label>
+            ${field("论文与专利链接", "honors.papers.href", h.papers.href || "publications.html")}
+            ${field("论文与专利按钮", "honors.papers.cta", h.papers.cta || "查看论文与专利")}
             <label>竞赛
               <textarea data-key="honors.contests.items">${h.contests.items.join("\n")}</textarea>
             </label>
@@ -215,6 +214,7 @@
           lists: [],
           paper: { title: "", venue: "", doi: "" },
           links: [],
+          gallery: [],
         };
       }
 
@@ -279,6 +279,9 @@
                 <textarea data-key="lists">${(work.lists || [])
                   .map((g) => [g.title, ...(g.items || [])].join("\n"))
                   .join("\n\n")}</textarea>
+              </label>
+              <label>详情页图集（落地清单下方，每行：路径 | 说明）
+                <textarea data-key="gallery">${(work.gallery || []).map((g) => `${g.src} | ${g.alt || ""}`).join("\n")}</textarea>
               </label>
               ${field("论文标题", "paper.title", work.paper?.title)}
               ${field("论文刊物/状态", "paper.venue", work.paper?.venue)}
@@ -357,7 +360,9 @@
           value: p.left,
           label: p.right,
         }));
-        site.honors.papers.items = linesToList(readKey(root, "honors.papers.items"));
+        site.honors.papers.href = readKey(root, "honors.papers.href") || "publications.html";
+        site.honors.papers.cta = readKey(root, "honors.papers.cta") || "查看论文与专利";
+        delete site.honors.papers.items;
         site.honors.contests.items = linesToList(readKey(root, "honors.contests.items"));
         site.honors.awards.items = linesToList(readKey(root, "honors.awards.items"));
         site.honors.tools.items = linesToList(readKey(root, "honors.tools.items"));
@@ -409,6 +414,7 @@
         work.outcome = readKey(root, "outcome");
         work.metrics = collectPairs(readKey(root, "metrics")).map((p) => ({ value: p.left, label: p.right }));
         work.lists = parseLists(readKey(root, "lists"));
+        work.gallery = collectPairs(readKey(root, "gallery")).map((p) => ({ src: p.left, alt: p.right }));
         work.paper = {
           title: readKey(root, "paper.title"),
           venue: readKey(root, "paper.venue"),

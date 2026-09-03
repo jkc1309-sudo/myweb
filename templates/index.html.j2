@@ -173,7 +173,7 @@
             <h2>{{ site.honors.heading }}</h2>
           </div>
           <div class="honor-grid reveal">
-            <article class="honor-card">
+            <a class="honor-card honor-card--link" href="{{ site.honors.papers.href or 'publications.html' }}">
               <p class="section-label">{{ site.honors.papers.label }}</p>
               <div class="honor-stat">
                 {% for stat in site.honors.papers.stats %}
@@ -183,12 +183,8 @@
                 </div>
                 {% endfor %}
               </div>
-              <ul>
-                {% for item in site.honors.papers['items'] %}
-                <li>{{ item }}</li>
-                {% endfor %}
-              </ul>
-            </article>
+              <span class="work-card__arrow">{{ site.honors.papers.cta or '查看论文与专利' }}</span>
+            </a>
             <article class="honor-card">
               <p class="section-label">{{ site.honors.contests.label }}</p>
               <ul>

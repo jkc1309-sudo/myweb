@@ -1,62 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Publications | Kecheng Jin</title>
+    <title>论文与专利 | 金可成</title>
     <meta
       name="description"
-      content="Publications, patents, awards, and public impact by Kecheng Jin in HCI, generative AI, and interactive systems."
+      content="论文与发明专利"
     />
-    <link rel="stylesheet" href="../styles.css" />
-    <script defer src="../script.js"></script>
-    <style>
-      body[data-page="publications"] .page-intro {
-        padding-top: 45px;
-        padding-bottom: 45px;
-      }
-
-      body[data-page="publications"] .page-intro .eyebrow {
-        margin-bottom: 0;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css?v=20260903b" />
+    <script defer src="script.js"></script>
   </head>
-  <body data-page="publications">
-    <div class="site-shell">
+  <body data-page="publications" data-nav="honors">
+    <div class="site-shell" id="top">
       <header class="site-header">
         <a class="brand" href="index.html">
           <span class="brand-script">Kecheng</span>
         </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="打开导航">
           <span></span>
           <span></span>
         </button>
         <div class="header-end">
-          <nav class="site-nav">
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="publications.html">Publications</a>
-            <a href="cv.html">CV</a>
+          <nav class="site-nav" aria-label="页面导航">
+            <a href="index.html#about" data-section="about">简介</a>
+            <a href="index.html#projects" data-section="projects">项目</a>
+            <a href="index.html#research" data-section="research">研究</a>
+            <a href="index.html#honors" data-section="honors">荣誉</a>
+            <a href="index.html#contact" data-section="contact">联系</a>
+            <a class="nav-cta" href="cv.html" data-section="cv">简历</a>
           </nav>
-          <nav class="lang-switch" aria-label="Language">
-            <a href="../publications.html" hreflang="zh-CN">中</a>
+          <nav class="lang-switch" aria-label="语言">
+            <a href="publications.html" aria-current="page">中</a>
             <span aria-hidden="true">/</span>
-            <a href="publications.html" aria-current="page">EN</a>
+            <a href="en/publications.html" hreflang="en">EN</a>
           </nav>
         </div>
       </header>
 
       <main>
         <section class="page-intro reveal">
-          <p class="eyebrow">Publications & Outcomes</p>
-          <p class="lead">
-            The goal is not only to publish systems, but to test, translate, and land them in practice.
-          </p>
+          <nav class="breadcrumb" aria-label="面包屑">
+            <a href="index.html">首页</a>
+            <span>/</span>
+            <a href="index.html#honors">荣誉</a>
+            <span>/</span>
+            <span>论文与专利</span>
+          </nav>
+          <p class="eyebrow">论文与专利</p>
+          <h1>论文与专利列表</h1>
+          <p class="lead">研究生就读期间发表的论文与专利集中于此。</p>
         </section>
 
         <section class="section publication-layout reveal">
           <article class="stack-card">
-            <p class="section-label">Journal Articles</p>
+            <p class="section-label">期刊论文</p>
             <ul class="publication-list">
               <li>
                 <u>Kecheng Jin</u>, Hao Jiang, Shang Shi, Shichao Huang, Haoye Dong, Yinqing Li,
@@ -70,7 +68,7 @@
           </article>
 
           <article class="stack-card">
-            <p class="section-label">Conference Papers</p>
+            <p class="section-label">会议论文</p>
             <ul class="publication-list">
               <li>
                 Weijia Lin, Xueyan Cai, Shichao Huang, Haoye Dong, Jiayu Yao, Jiayi Ma, Fengyu Wang,
@@ -82,14 +80,16 @@
               <li>
                 Yijun Zhao, Zhengke Li, Yicheng Wang, Xueyan Cai, Xiaojing Zhou, Yifan Yan,
                 <u>Kecheng Jin</u>, Shiying Ding, Yilin Shao, Jiacheng Cao, Pinhao Wang, Cheng Yao, Ye Tao,
-                Guanyun Wang. 2025. <strong>DreamDirector:</strong> Designing a Generative AI System to
+                Guanyun Wang. 2025.
+                <strong>DreamDirector:</strong> Designing a Generative AI System to
                 Aid Therapists in Treating Clients&rsquo; Nightmares. In <em>Proceedings of the 30th
                 International Conference on Intelligent User Interfaces (IUI&rsquo;25)</em>.
                 <a href="https://doi.org/10.1145/3708359.3712078" target="_blank" rel="noopener">doi.org/10.1145/3708359.3712078</a>
               </li>
               <li>
                 Shang Shi, Lin Zhou, <u>Kecheng Jin</u>, Xueyan Cai, Haoye Dong, Shichao Huang, Xiaolong Li,
-                Cheng Yao. 2024. <strong>Menglong Noodle Restaurant:</strong> Research and Design of
+                Cheng Yao. 2024.
+                <strong>Menglong Noodle Restaurant:</strong> Research and Design of
                 Service-oriented Smart Restaurant. In <em>2024 17th International Symposium on Computational
                 Intelligence and Design (ISCID)</em>.
                 <a href="https://doi.org/10.1109/ISCID63852.2024.00015" target="_blank" rel="noopener">doi.org/10.1109/ISCID63852.2024.00015</a>
@@ -130,70 +130,43 @@
           </article>
 
           <article class="stack-card">
-            <p class="section-label">Under Review</p>
+            <p class="section-label">在投</p>
             <ul class="publication-list">
               <li>
                 <strong>Gaps, Gains, and Guidance:</strong> Designing Narrative Systems to Support Visitor
-                Curiosity in Museum. Manuscript under review.
+                Curiosity in Museum. 稿件在投。
               </li>
             </ul>
           </article>
 
           <article class="stack-card">
-            <p class="section-label">Patents</p>
+            <p class="section-label">发明专利</p>
             <ul class="publication-list">
               <li>
-                <strong>Electronic puzzle maze toy.</strong>
-                Zhejiang University, CN116747509B (granted). Application no. CN202310789224.4.
+                <strong>一种电子拼图迷宫玩具。</strong>
+                浙江大学，CN116747509B（已授权）。申请号 CN202310789224.4。
               </li>
               <li>
-                <strong>A method and system for cultivating teachers&rsquo; classroom training ability based on real-time interaction with virtual students.</strong>
-                Zhejiang University, CN120894193A (under substantive examination). Application no. CN202510993772.8.
+                <strong>一种基于虚拟学生实时交互的教师课堂实训能力培养方法及系统。</strong>
+                浙江大学，CN120894193A（实审）。申请号 CN202510993772.8。
               </li>
               <li>
-                <strong>A method for constructing multimodal intelligent knowledge cards and self-organizing thematic links.</strong>
-                Shenzhen Kuaiyu Technology Co., Ltd., CN122364572A (under substantive examination). Application no. CN202610385561.0.
+                <strong>一种多模态智能知识卡片构建及按主题自组织链接的方法。</strong>
+                深圳快语科技有限公司，CN122364572A（实审）。申请号 CN202610385561.0。
               </li>
             </ul>
           </article>
-
-          <article class="stack-card">
-            <p class="section-label">Awards</p>
-            <ul class="publication-list">
-              <li><strong>Outstanding Graduate Student Award.</strong> Zhejiang University, 2022–2025.</li>
-              <li><strong>Best Short Paper Award.</strong> ACM IDC 2024.</li>
-              <li><strong>Prototypes for Humanity.</strong> Dubai Design Week 2025.</li>
-              <li><strong>James Dyson Award.</strong> China Top 8, 2024.</li>
-              <li><strong>A Design Award.</strong> Iron Prize.</li>
-              <li><strong>Geely Innovation Competition.</strong> Champion.</li>
-            </ul>
-          </article>
-        </section>
-
-        <section class="section reveal" style="padding-top: 45px; padding-bottom: 45px;">
-          <div class="section-heading">
-            <p class="section-label">Deployment & Impact</p>
-            <h2>Systems developed for public-facing museum and heritage contexts</h2>
-          </div>
-          <div class="impact-panel">
-            <p>
-              AI guide and museum narrative systems were deployed or designed for Tengwang Pavilion,
-              Jinggangshan Revolutionary Museum, Haihunhou Archaeological Site Park, August 1st Nanchang
-              Uprising Memorial Museum, Liaoning Provincial Museum, Western Xia Imperial Tombs, Nanyue King
-              Museum, and Liu Shaoqi Memorial Site.
-            </p>
-            <p>
-              A related mini-program reached 177,121 users, demonstrating that the work has moved beyond
-              conceptual prototyping into real public engagement.
-            </p>
-          </div>
         </section>
       </main>
 
-      <footer class="site-footer">
-        <p>Kecheng Jin</p>
-        <a href="../publications.html" hreflang="zh-CN">中文主站</a>
+      <footer class="site-footer rich">
+        <div class="footer-bar">
+          <p>© 2026 金可成 · Kecheng Jin</p>
+          <p>更新于 2026.09</p>
+          <a href="#top" class="js-back-to-top">返回顶部 ↑</a>
+        </div>
       </footer>
     </div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">↑</button>
   </body>
 </html>

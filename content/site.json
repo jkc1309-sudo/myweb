@@ -1,7 +1,7 @@
 {
   "title": "金可成 | AI 产品经理",
   "description": "金可成，浙江大学人机交互博士生，AI 产品经理。连接用户需求、设计方案、技术实现与数据验证，落地博物馆导览、知识产权工作台与教育智能体。",
-  "css_version": "1788357415",
+  "css_version": "20260903b",
   "portrait": "assets/portrait.png",
   "portrait_alt": "金可成肖像",
   "hero": {
@@ -97,6 +97,8 @@
     "heading": "奖项、论文与常用工具",
     "papers": {
       "label": "论文与专利",
+      "href": "publications.html",
+      "cta": "查看论文与专利",
       "stats": [
         {
           "value": "8",
@@ -106,10 +108,6 @@
           "value": "3",
           "label": "项发明专利"
         }
-      ],
-      "items": [
-        "IJHCI、IDC、IUI、UIST、HCII 等会议与期刊",
-        "电子迷宫拼图玩具；虚拟学生课堂训练方法（实审）"
       ]
     },
     "contests": {

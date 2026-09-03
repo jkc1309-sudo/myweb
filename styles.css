@@ -2049,6 +2049,29 @@ html[lang="zh-CN"] [id] {
   gap: 14px;
 }
 
+.honor-card--link {
+  align-content: start;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition:
+    transform 280ms var(--ease),
+    box-shadow 280ms var(--ease),
+    border-color 280ms var(--ease);
+}
+
+.honor-card--link:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.honor-card--link .work-card__arrow {
+  margin-top: 2px;
+}
+
+.honor-card--link:hover .work-card__arrow {
+  transform: translateX(4px);
+}
+
 .honor-card ul {
   display: grid;
   gap: 10px;
@@ -2294,6 +2317,26 @@ html[lang="zh-CN"] [id] {
   padding-left: 1.2em;
 }
 
+.detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.detail-gallery figure {
+  margin: 0;
+  background: var(--tile);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.detail-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .result-callout {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2397,7 +2440,8 @@ html[lang="zh-CN"] [id] {
 @media (max-width: 720px) {
   .honor-grid,
   .result-callout,
-  .venue-list {
+  .venue-list,
+  .detail-gallery {
     grid-template-columns: 1fr;
   }
 
@@ -2427,13 +2471,15 @@ html[lang="zh-CN"] [id] {
 
   .reveal,
   .work-card,
+  .honor-card--link,
   .work-card__media img,
   .work-card__arrow,
   .back-to-top {
     transition: none !important;
   }
 
-  .work-card:hover {
+  .work-card:hover,
+  .honor-card--link:hover {
     transform: none;
   }
 }

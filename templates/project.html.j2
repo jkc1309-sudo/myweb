@@ -116,6 +116,15 @@
             </ul>
             {% endfor %}
             {% endif %}
+            {% if work.gallery %}
+            <div class="detail-gallery">
+              {% for shot in work.gallery %}
+              <figure>
+                <img src="../{{ shot.src }}" alt="{{ shot.alt or work.title }}" />
+              </figure>
+              {% endfor %}
+            </div>
+            {% endif %}
             {% if work.links %}
             <p>
               {% for link in work.links %}
